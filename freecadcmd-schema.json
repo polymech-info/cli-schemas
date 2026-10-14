@@ -1,0 +1,302 @@
+{
+  "bundleVersion": 1,
+  "provenance": "cli",
+  "trust": "generated",
+  "description": "FreeCAD: freecadcmd [options] File1 File2 ...",
+  "schemas": {},
+  "commands": {
+    "freecadcmd": {
+      "description": "FreeCAD CAD modeler command-line interface for scripting, batch processing, and file conversion.",
+      "options": [
+        {
+          "id": "verbose",
+          "names": [
+            "--verbose"
+          ],
+          "description": "Prints verbose version string",
+          "required": false,
+          "kind": "flag",
+          "group": "Generic"
+        },
+        {
+          "id": "console",
+          "names": [
+            "-c",
+            "--console"
+          ],
+          "description": "Starts in console mode",
+          "required": false,
+          "kind": "flag",
+          "group": "Generic"
+        },
+        {
+          "id": "response_file",
+          "names": [
+            "--response-file"
+          ],
+          "description": "Can be specified with '@name', too",
+          "required": false,
+          "kind": "string",
+          "group": "Generic"
+        },
+        {
+          "id": "dump_config",
+          "names": [
+            "--dump-config"
+          ],
+          "description": "Dumps configuration",
+          "required": false,
+          "kind": "flag",
+          "group": "Generic"
+        },
+        {
+          "id": "get_config",
+          "names": [
+            "--get-config"
+          ],
+          "description": "Prints the value of the requested configuration key",
+          "required": false,
+          "kind": "string",
+          "group": "Generic"
+        },
+        {
+          "id": "set_config",
+          "names": [
+            "--set-config"
+          ],
+          "description": "Sets the value of a configuration key",
+          "required": false,
+          "kind": "string",
+          "group": "Generic"
+        },
+        {
+          "id": "keep_deprecated_paths",
+          "names": [
+            "--keep-deprecated-paths"
+          ],
+          "description": "If set then config files are kept on the old location",
+          "required": false,
+          "kind": "flag",
+          "group": "Generic"
+        },
+        {
+          "id": "write_log",
+          "names": [
+            "-l",
+            "--write-log"
+          ],
+          "description": "Writes FreeCAD.log to the user directory.",
+          "required": false,
+          "kind": "flag",
+          "group": "Configuration"
+        },
+        {
+          "id": "log_file",
+          "names": [
+            "--log-file"
+          ],
+          "description": "Unlike --write-log this allows logging to an arbitrary file",
+          "required": false,
+          "accepts": null,
+          "generates": [
+            "log"
+          ],
+          "transport": "local",
+          "confidence": 4,
+          "fill": "${SRC_DIR}/${SRC_NAME}.log",
+          "kind": "path",
+          "group": "Configuration",
+          "schema": {
+            "type": "string",
+            "format": "path",
+            "x-pm.extensions": [
+              "log"
+            ],
+            "x-pm.transport": "local"
+          }
+        },
+        {
+          "id": "user_cfg",
+          "names": [
+            "-u",
+            "--user-cfg"
+          ],
+          "description": "User config file to load/save user settings",
+          "required": false,
+          "accepts": [
+            "cfg"
+          ],
+          "generates": null,
+          "transport": "local",
+          "confidence": 4,
+          "fill": "${CURRENT_SELECTION}",
+          "kind": "path",
+          "group": "Configuration",
+          "schema": {
+            "type": "string",
+            "format": "path",
+            "x-pm.extensions": [
+              "cfg"
+            ],
+            "x-pm.transport": "local"
+          }
+        },
+        {
+          "id": "system_cfg",
+          "names": [
+            "-s",
+            "--system-cfg"
+          ],
+          "description": "System config file to load/save system settings",
+          "required": false,
+          "accepts": [
+            "cfg"
+          ],
+          "generates": null,
+          "transport": "local",
+          "confidence": 4,
+          "fill": "${CURRENT_SELECTION}",
+          "kind": "path",
+          "group": "Configuration",
+          "schema": {
+            "type": "string",
+            "format": "path",
+            "x-pm.extensions": [
+              "cfg"
+            ],
+            "x-pm.transport": "local"
+          }
+        },
+        {
+          "id": "run_test",
+          "names": [
+            "-t",
+            "--run-test"
+          ],
+          "description": "Run a given test case (use 0 (zero) to run all tests). If no argument is provided then return list of all available tests.",
+          "required": false,
+          "kind": "string",
+          "group": "Configuration"
+        },
+        {
+          "id": "run_open",
+          "names": [
+            "-r",
+            "--run-open"
+          ],
+          "description": "Run a given test case (use 0 (zero) to run all tests). If no argument is provided then return list of all available tests. Keeps UI open after test(s) complete.",
+          "required": false,
+          "kind": "string",
+          "group": "Configuration"
+        },
+        {
+          "id": "module_path",
+          "names": [
+            "-M",
+            "--module-path"
+          ],
+          "description": "Additional module paths",
+          "required": false,
+          "accepts": "directory",
+          "generates": "none",
+          "transport": "local",
+          "confidence": 4,
+          "fill": "${CURRENT_SELECTION}",
+          "kind": "path",
+          "group": "Configuration"
+        },
+        {
+          "id": "python_path",
+          "names": [
+            "-P",
+            "--python-path"
+          ],
+          "description": "Additional python paths",
+          "required": false,
+          "accepts": "directory",
+          "generates": "none",
+          "transport": "local",
+          "confidence": 4,
+          "fill": "${CURRENT_SELECTION}",
+          "kind": "path",
+          "group": "Configuration"
+        },
+        {
+          "id": "single_instance",
+          "names": [
+            "--single-instance"
+          ],
+          "description": "Allow to run a single instance of the application",
+          "required": false,
+          "kind": "flag",
+          "group": "Configuration"
+        },
+        {
+          "id": "safe_mode",
+          "names": [
+            "--safe-mode"
+          ],
+          "description": "Force enable safe mode",
+          "required": false,
+          "kind": "flag",
+          "group": "Configuration"
+        },
+        {
+          "id": "pass",
+          "names": [
+            "--pass"
+          ],
+          "description": "Ignores the following arguments and pass them through to be used by a script",
+          "required": false,
+          "kind": "string",
+          "group": "Configuration"
+        },
+        {
+          "id": "files",
+          "names": [
+            "File1"
+          ],
+          "description": "Input files to open in FreeCAD",
+          "required": false,
+          "accepts": [
+            "fcstd",
+            "step",
+            "stp",
+            "iges",
+            "igs",
+            "stl",
+            "obj",
+            "dxf",
+            "svg",
+            "brep",
+            "ply"
+          ],
+          "generates": null,
+          "transport": "local",
+          "confidence": 4,
+          "fill": "${CURRENT_SELECTION}",
+          "kind": "path",
+          "group": "Files",
+          "schema": {
+            "type": "string",
+            "format": "path",
+            "x-pm.extensions": [
+              "fcstd",
+              "step",
+              "stp",
+              "iges",
+              "igs",
+              "stl",
+              "obj",
+              "dxf",
+              "svg",
+              "brep",
+              "ply"
+            ],
+            "x-pm.transport": "local"
+          }
+        }
+      ]
+    }
+  }
+}

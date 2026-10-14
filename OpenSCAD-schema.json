@@ -1,0 +1,412 @@
+{
+  "bundleVersion": 1,
+  "provenance": "cli",
+  "trust": "generated",
+  "description": "OpenSCAD: a programmer's solid modeler - openscad.exe [options] file.scad",
+  "schemas": {},
+  "commands": {
+    "openscad": {
+      "description": "OpenSCAD is a software for creating solid 3D CAD objects. It compiles OpenSCAD script files (.scad) into 3D meshes and supports exporting to various formats including STL, AMF, 3MF, DXF, SVG, PDF, and PNG.",
+      "options": [
+        {
+          "id": "input",
+          "names": [
+            "file.scad"
+          ],
+          "description": "Input OpenSCAD script file (.scad) to compile or preview",
+          "required": true,
+          "accepts": [
+            "scad"
+          ],
+          "generates": null,
+          "transport": "local",
+          "confidence": 5,
+          "fill": "${CURRENT_SELECTION}",
+          "group": "Files",
+          "schema": {
+            "type": "string",
+            "format": "path",
+            "x-pm.extensions": [
+              "scad"
+            ],
+            "x-pm.transport": "local"
+          }
+        },
+        {
+          "id": "output",
+          "names": [
+            "-o",
+            "--o"
+          ],
+          "description": "Output specified file instead of running the GUI; the file extension specifies the type: stl, off, amf, 3mf, csg, dxf, svg, pdf, png, echo, ast, term, nef3, nefdbg. Use '-' for stdout",
+          "required": false,
+          "accepts": null,
+          "generates": [
+            "stl",
+            "off",
+            "amf",
+            "3mf",
+            "csg",
+            "dxf",
+            "svg",
+            "pdf",
+            "png",
+            "echo",
+            "ast",
+            "term",
+            "nef3",
+            "nefdbg"
+          ],
+          "transport": "local",
+          "confidence": 5,
+          "fill": "${SRC_DIR}/${SRC_NAME}.stl",
+          "group": "Allowed",
+          "schema": {
+            "type": "string",
+            "format": "path",
+            "x-pm.extensions": [
+              "stl",
+              "off",
+              "amf",
+              "3mf",
+              "csg",
+              "dxf",
+              "svg",
+              "pdf",
+              "png",
+              "echo",
+              "ast",
+              "term",
+              "nef3",
+              "nefdbg"
+            ],
+            "x-pm.transport": "local"
+          }
+        },
+        {
+          "id": "export_format",
+          "names": [
+            "--export-format"
+          ],
+          "description": "Overrides format of exported scad file when using option '-o'; arg can be any supported file extension. For ascii stl export specify 'asciistl', for binary stl export specify 'binstl'",
+          "required": false,
+          "kind": "string",
+          "group": "Allowed"
+        },
+        {
+          "id": "define_var",
+          "names": [
+            "-D",
+            "--D"
+          ],
+          "description": "var=val - pre-define variables",
+          "required": false,
+          "kind": "string",
+          "group": "Allowed"
+        },
+        {
+          "id": "param_file",
+          "names": [
+            "-p",
+            "--p"
+          ],
+          "description": "Customizer parameter file",
+          "required": false,
+          "accepts": [
+            "json"
+          ],
+          "generates": null,
+          "transport": "local",
+          "confidence": 4,
+          "fill": "${CURRENT_SELECTION}",
+          "group": "Allowed",
+          "schema": {
+            "type": "string",
+            "format": "path",
+            "x-pm.extensions": [
+              "json"
+            ],
+            "x-pm.transport": "local"
+          }
+        },
+        {
+          "id": "param_set",
+          "names": [
+            "-P",
+            "--P"
+          ],
+          "description": "Customizer parameter set",
+          "required": false,
+          "kind": "string",
+          "group": "Allowed"
+        },
+        {
+          "id": "camera",
+          "names": [
+            "--camera"
+          ],
+          "description": "Camera parameters when exporting png: =translate_x,y,z,rot_x,y,z,dist or =eye_x,y,z,center_x,y,z",
+          "required": false,
+          "kind": "string",
+          "group": "Allowed"
+        },
+        {
+          "id": "autocenter",
+          "names": [
+            "--autocenter"
+          ],
+          "description": "Adjust camera to look at object's center",
+          "required": false,
+          "kind": "flag",
+          "group": "Allowed"
+        },
+        {
+          "id": "viewall",
+          "names": [
+            "--viewall"
+          ],
+          "description": "Adjust camera to fit object",
+          "required": false,
+          "kind": "flag",
+          "group": "Allowed"
+        },
+        {
+          "id": "imgsize",
+          "names": [
+            "--imgsize"
+          ],
+          "description": "=width,height of exported png",
+          "required": false,
+          "kind": "string",
+          "group": "Allowed"
+        },
+        {
+          "id": "render",
+          "names": [
+            "--render"
+          ],
+          "description": "Full geometry evaluation when exporting png",
+          "required": false,
+          "kind": "string",
+          "group": "Allowed"
+        },
+        {
+          "id": "preview",
+          "names": [
+            "--preview"
+          ],
+          "description": "=[throwntogether] - for ThrownTogether preview png",
+          "required": false,
+          "kind": "string",
+          "group": "Allowed"
+        },
+        {
+          "id": "animate",
+          "names": [
+            "--animate"
+          ],
+          "description": "Export N animated frames",
+          "required": false,
+          "kind": "number",
+          "group": "Allowed"
+        },
+        {
+          "id": "view",
+          "names": [
+            "--view"
+          ],
+          "description": "=view options: axes | crosshairs | edges | scales | wireframe",
+          "required": false,
+          "kind": "enum",
+          "choices": [
+            "axes",
+            "crosshairs",
+            "edges",
+            "scales",
+            "wireframe"
+          ],
+          "group": "Allowed"
+        },
+        {
+          "id": "projection",
+          "names": [
+            "--projection"
+          ],
+          "description": "=(o)rtho or (p)erspective when exporting png",
+          "required": false,
+          "kind": "enum",
+          "choices": [
+            "ortho",
+            "perspective"
+          ],
+          "group": "Allowed"
+        },
+        {
+          "id": "csglimit",
+          "names": [
+            "--csglimit"
+          ],
+          "description": "=n - stop rendering at n CSG elements when exporting png",
+          "required": false,
+          "kind": "number",
+          "group": "Allowed"
+        },
+        {
+          "id": "colorscheme",
+          "names": [
+            "--colorscheme"
+          ],
+          "description": "=colorscheme (default: Cornfield)",
+          "required": false,
+          "kind": "string",
+          "group": "Allowed"
+        },
+        {
+          "id": "deps_file",
+          "names": [
+            "-d",
+            "--d"
+          ],
+          "description": "deps_file - generate a dependency file for make",
+          "required": false,
+          "accepts": null,
+          "generates": [
+            "mk"
+          ],
+          "transport": "local",
+          "confidence": 3,
+          "fill": "${SRC_DIR}/${SRC_NAME}.d",
+          "group": "Allowed",
+          "schema": {
+            "type": "string",
+            "format": "path",
+            "x-pm.extensions": [
+              "mk"
+            ],
+            "x-pm.transport": "local"
+          }
+        },
+        {
+          "id": "make_cmd",
+          "names": [
+            "-m",
+            "--m"
+          ],
+          "description": "make_cmd - runs make_cmd file if file is missing",
+          "required": false,
+          "kind": "string",
+          "group": "Allowed"
+        },
+        {
+          "id": "quiet",
+          "names": [
+            "-q",
+            "--quiet"
+          ],
+          "description": "Quiet mode (don't print anything except errors)",
+          "required": false,
+          "kind": "flag",
+          "group": "Allowed"
+        },
+        {
+          "id": "hardwarnings",
+          "names": [
+            "--hardwarnings"
+          ],
+          "description": "Stop on the first warning",
+          "required": false,
+          "kind": "flag",
+          "group": "Allowed"
+        },
+        {
+          "id": "check_parameters",
+          "names": [
+            "--check-parameters"
+          ],
+          "description": "=true/false, configure the parameter check for user modules and functions",
+          "required": false,
+          "kind": "enum",
+          "choices": [
+            "true",
+            "false"
+          ],
+          "group": "Allowed"
+        },
+        {
+          "id": "check_parameter_ranges",
+          "names": [
+            "--check-parameter-ranges"
+          ],
+          "description": "=true/false, configure the parameter range check for builtin modules",
+          "required": false,
+          "kind": "enum",
+          "choices": [
+            "true",
+            "false"
+          ],
+          "group": "Allowed"
+        },
+        {
+          "id": "debug",
+          "names": [
+            "--debug"
+          ],
+          "description": "Special debug info",
+          "required": false,
+          "kind": "string",
+          "group": "Allowed"
+        },
+        {
+          "id": "stl_file_deprecated",
+          "names": [
+            "-s",
+            "--s"
+          ],
+          "description": "STL file deprecated, use -o",
+          "required": false,
+          "accepts": null,
+          "generates": [
+            "stl"
+          ],
+          "transport": "local",
+          "confidence": 4,
+          "fill": "${SRC_DIR}/${SRC_NAME}.stl",
+          "group": "Allowed",
+          "schema": {
+            "type": "string",
+            "format": "path",
+            "x-pm.extensions": [
+              "stl"
+            ],
+            "x-pm.transport": "local"
+          }
+        },
+        {
+          "id": "dxf_file_deprecated",
+          "names": [
+            "-x",
+            "--x"
+          ],
+          "description": "DXF file deprecated, use -o",
+          "required": false,
+          "accepts": null,
+          "generates": [
+            "dxf"
+          ],
+          "transport": "local",
+          "confidence": 4,
+          "fill": "${SRC_DIR}/${SRC_NAME}.dxf",
+          "group": "Allowed",
+          "schema": {
+            "type": "string",
+            "format": "path",
+            "x-pm.extensions": [
+              "dxf"
+            ],
+            "x-pm.transport": "local"
+          }
+        }
+      ]
+    }
+  }
+}

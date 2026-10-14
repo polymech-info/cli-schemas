@@ -1,0 +1,163 @@
+{
+  "bundleVersion": 1,
+  "provenance": "cli",
+  "trust": "generated",
+  "description": "vlc [Options] [Items]... — the VLC multimedia player and server",
+  "schemas": {},
+  "commands": {
+    "vlc": {
+      "description": "VLC media player that plays multimedia files, streams, DVDs, VCDs, and various network protocols from the command line.",
+      "options": [
+        {
+          "id": "input",
+          "names": [
+            "items"
+          ],
+          "description": "Input items to play: files, URLs, or special MRLs like dvd://, vcd://, udp://, http://, rtsp://, vlc://",
+          "required": false,
+          "accepts": [
+            "mp4",
+            "mkv",
+            "mov",
+            "avi",
+            "webm",
+            "mp3",
+            "wav",
+            "flac",
+            "ogg",
+            "aac",
+            "m4a",
+            "wma",
+            "jpg",
+            "png",
+            "gif"
+          ],
+          "generates": null,
+          "transport": "local",
+          "confidence": 4,
+          "fill": "${CURRENT_SELECTION}",
+          "group": "Files",
+          "schema": {
+            "type": "string",
+            "format": "path",
+            "x-pm.extensions": [
+              "mp4",
+              "mkv",
+              "mov",
+              "avi",
+              "webm",
+              "mp3",
+              "wav",
+              "flac",
+              "ogg",
+              "aac",
+              "m4a",
+              "wma",
+              "jpg",
+              "png",
+              "gif"
+            ],
+            "x-pm.transport": "local"
+          }
+        },
+        {
+          "id": "fullscreen",
+          "names": [
+            "--fullscreen"
+          ],
+          "description": "Start in fullscreen mode",
+          "required": false,
+          "kind": "flag"
+        },
+        {
+          "id": "no_audio",
+          "names": [
+            "--no-audio",
+            "--noaudio"
+          ],
+          "description": "Disable audio output",
+          "required": false,
+          "kind": "flag"
+        },
+        {
+          "id": "no_video",
+          "names": [
+            "--no-video",
+            "--novideo"
+          ],
+          "description": "Disable video output",
+          "required": false,
+          "kind": "flag"
+        },
+        {
+          "id": "loop",
+          "names": [
+            "--loop"
+          ],
+          "description": "Loop playback repeatedly",
+          "required": false,
+          "kind": "flag"
+        },
+        {
+          "id": "volume",
+          "names": [
+            "--volume"
+          ],
+          "description": "Set audio volume level (integer, typically 0-256)",
+          "required": false,
+          "kind": "number"
+        },
+        {
+          "id": "start_time",
+          "names": [
+            "--start-time"
+          ],
+          "description": "Start playback at a given time in seconds",
+          "required": false,
+          "kind": "float"
+        },
+        {
+          "id": "stop_time",
+          "names": [
+            "--stop-time"
+          ],
+          "description": "Stop playback at a given time in seconds",
+          "required": false,
+          "kind": "float"
+        },
+        {
+          "id": "aspect_ratio",
+          "names": [
+            "--aspect-ratio"
+          ],
+          "description": "Force video aspect ratio (e.g., 16:9, 4:3)",
+          "required": false,
+          "kind": "string"
+        },
+        {
+          "id": "sout",
+          "names": [
+            "--sout"
+          ],
+          "description": "Stream output chain for recording or transcoding",
+          "required": false,
+          "kind": "string"
+        },
+        {
+          "id": "snapshot_path",
+          "names": [
+            "--snapshot-path"
+          ],
+          "description": "Directory path for saving video snapshots",
+          "required": false,
+          "accepts": "none",
+          "generates": "directory",
+          "transport": "local",
+          "confidence": 3,
+          "fill": "${SRC_DIR}",
+          "group": "Files"
+        }
+      ]
+    }
+  }
+}
