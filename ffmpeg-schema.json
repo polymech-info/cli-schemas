@@ -1,0 +1,1359 @@
+{
+  "bundleVersion": 1,
+  "provenance": "cli",
+  "trust": "generated",
+  "description": "Universal media converter: ffmpeg [options] [[infile options] -i infile]... {[outfile options]}...",
+  "schemas": {},
+  "commands": {
+    "ffmpeg": {
+      "description": "Reads one or more input media files and converts or transcodes them into an output media file, applying optional filters, codecs, and format settings.",
+      "options": [
+        {
+          "id": "input",
+          "names": [
+            "-i"
+          ],
+          "description": "Input file URL; can be followed by per-input options applied to that input.",
+          "required": true,
+          "accepts": [
+            "mp4",
+            "mkv",
+            "mov",
+            "avi",
+            "flv",
+            "webm",
+            "wmv",
+            "ts",
+            "mp3",
+            "wav",
+            "aac",
+            "ogg",
+            "oga",
+            "ogv",
+            "opus",
+            "flac",
+            "wv",
+            "m4a",
+            "aiff",
+            "gif",
+            "apng",
+            "webp",
+            "png",
+            "jpg",
+            "jpeg",
+            "bmp",
+            "tiff",
+            "tif"
+          ],
+          "generates": null,
+          "transport": "local",
+          "confidence": 5,
+          "fill": "${CURRENT_SELECTION}",
+          "schema": {
+            "type": "string",
+            "format": "path",
+            "x-pm.extensions": [
+              "mp4",
+              "mkv",
+              "mov",
+              "avi",
+              "flv",
+              "webm",
+              "wmv",
+              "ts",
+              "mp3",
+              "wav",
+              "aac",
+              "ogg",
+              "oga",
+              "ogv",
+              "opus",
+              "flac",
+              "wv",
+              "m4a",
+              "aiff",
+              "gif",
+              "apng",
+              "webp",
+              "png",
+              "jpg",
+              "jpeg",
+              "bmp",
+              "tiff",
+              "tif"
+            ],
+            "x-pm.transport": "local"
+          },
+          "group": "Files"
+        },
+        {
+          "id": "output",
+          "names": [
+            "outfile"
+          ],
+          "description": "Output file URL; positional argument specifying the destination file.",
+          "required": true,
+          "accepts": null,
+          "generates": [
+            "mp4",
+            "mkv",
+            "mov",
+            "avi",
+            "flv",
+            "webm",
+            "wmv",
+            "ts",
+            "mp3",
+            "wav",
+            "aac",
+            "ogg",
+            "oga",
+            "ogv",
+            "opus",
+            "flac",
+            "wv",
+            "m4a",
+            "aiff",
+            "gif",
+            "apng",
+            "webp",
+            "png",
+            "jpg",
+            "jpeg",
+            "bmp",
+            "tiff",
+            "tif"
+          ],
+          "transport": "local",
+          "confidence": 5,
+          "fill": "${SRC_DIR}/${SRC_NAME}.mp4",
+          "schema": {
+            "type": "string",
+            "format": "path",
+            "x-pm.extensions": [
+              "mp4",
+              "mkv",
+              "mov",
+              "avi",
+              "flv",
+              "webm",
+              "wmv",
+              "ts",
+              "mp3",
+              "wav",
+              "aac",
+              "ogg",
+              "oga",
+              "ogv",
+              "opus",
+              "flac",
+              "wv",
+              "m4a",
+              "aiff",
+              "gif",
+              "apng",
+              "webp",
+              "png",
+              "jpg",
+              "jpeg",
+              "bmp",
+              "tiff",
+              "tif"
+            ],
+            "x-pm.transport": "local"
+          },
+          "group": "Files"
+        },
+        {
+          "id": "format",
+          "names": [
+            "-f"
+          ],
+          "description": "Force container format (auto-detected otherwise).",
+          "required": false,
+          "kind": "string",
+          "group": "Per-file"
+        },
+        {
+          "id": "duration",
+          "names": [
+            "-t"
+          ],
+          "description": "Stop transcoding after specified duration.",
+          "required": false,
+          "kind": "string",
+          "group": "Per-file"
+        },
+        {
+          "id": "to_time",
+          "names": [
+            "-to"
+          ],
+          "description": "Stop transcoding after specified time is reached.",
+          "required": false,
+          "kind": "string",
+          "group": "Per-file"
+        },
+        {
+          "id": "start_time",
+          "names": [
+            "-ss"
+          ],
+          "description": "Start transcoding at specified time offset.",
+          "required": false,
+          "kind": "string",
+          "group": "Per-file"
+        },
+        {
+          "id": "overwrite",
+          "names": [
+            "-y"
+          ],
+          "description": "Overwrite output files without asking.",
+          "required": false,
+          "kind": "flag",
+          "group": "Global"
+        },
+        {
+          "id": "no_overwrite",
+          "names": [
+            "-n"
+          ],
+          "description": "Never overwrite output files.",
+          "required": false,
+          "kind": "flag",
+          "group": "Global"
+        },
+        {
+          "id": "codec",
+          "names": [
+            "-c",
+            "-codec"
+          ],
+          "description": "Select encoder/decoder ('copy' to copy stream without reencoding). Can use :stream_spec to target specific streams.",
+          "required": false,
+          "kind": "string",
+          "group": "Per-stream"
+        },
+        {
+          "id": "filter",
+          "names": [
+            "-filter"
+          ],
+          "description": "Apply specified filters to audio/video streams. Can use :stream_spec to target specific streams.",
+          "required": false,
+          "kind": "string",
+          "group": "Per-stream"
+        },
+        {
+          "id": "metadata",
+          "names": [
+            "-metadata"
+          ],
+          "description": "Add metadata as key=value pairs to the output file. Can use :stream_spec.",
+          "required": false,
+          "kind": "string",
+          "group": "Per-file"
+        },
+        {
+          "id": "video_codec",
+          "names": [
+            "-vcodec",
+            "-c:v"
+          ],
+          "description": "Alias for -c:v (select encoder/decoder for video streams).",
+          "required": false,
+          "kind": "string",
+          "group": "Video"
+        },
+        {
+          "id": "audio_codec",
+          "names": [
+            "-acodec",
+            "-c:a"
+          ],
+          "description": "Alias for -c:a (select encoder/decoder for audio streams).",
+          "required": false,
+          "kind": "string",
+          "group": "Audio"
+        },
+        {
+          "id": "subtitle_codec",
+          "names": [
+            "-scodec",
+            "-c:s"
+          ],
+          "description": "Alias for -c:s (select encoder/decoder for subtitle streams).",
+          "required": false,
+          "kind": "string",
+          "group": "Subtitle"
+        },
+        {
+          "id": "data_codec",
+          "names": [
+            "-dcodec",
+            "-c:d"
+          ],
+          "description": "Alias for -c:d (select encoder/decoder for data streams).",
+          "required": false,
+          "kind": "string",
+          "group": "Data stream"
+        },
+        {
+          "id": "video_filter",
+          "names": [
+            "-vf",
+            "-filter:v"
+          ],
+          "description": "Alias for -filter:v (apply filters to video streams).",
+          "required": false,
+          "kind": "string",
+          "group": "Video"
+        },
+        {
+          "id": "audio_filter",
+          "names": [
+            "-af",
+            "-filter:a"
+          ],
+          "description": "Alias for -filter:a (apply filters to audio streams).",
+          "required": false,
+          "kind": "string",
+          "group": "Audio"
+        },
+        {
+          "id": "video_bitrate",
+          "names": [
+            "-b",
+            "-b:v"
+          ],
+          "description": "Video bitrate (use -b:v specifically).",
+          "required": false,
+          "kind": "string",
+          "group": "Video"
+        },
+        {
+          "id": "audio_bitrate",
+          "names": [
+            "-ab",
+            "-b:a"
+          ],
+          "description": "Alias for -b:a (select bitrate for audio streams).",
+          "required": false,
+          "kind": "string",
+          "group": "Audio"
+        },
+        {
+          "id": "frame_rate",
+          "names": [
+            "-r"
+          ],
+          "description": "Override input framerate/convert to given output framerate (Hz value, fraction or abbreviation). Can use :stream_spec.",
+          "required": false,
+          "kind": "string",
+          "group": "Video"
+        },
+        {
+          "id": "aspect_ratio",
+          "names": [
+            "-aspect"
+          ],
+          "description": "Set aspect ratio (4:3, 16:9 or 1.3333, 1.7777). Can use :stream_spec.",
+          "required": false,
+          "kind": "string",
+          "group": "Video"
+        },
+        {
+          "id": "sample_rate",
+          "names": [
+            "-ar"
+          ],
+          "description": "Set audio sampling rate (in Hz). Can use :stream_spec.",
+          "required": false,
+          "kind": "string",
+          "group": "Audio"
+        },
+        {
+          "id": "audio_channels",
+          "names": [
+            "-ac"
+          ],
+          "description": "Set number of audio channels. Can use :stream_spec.",
+          "required": false,
+          "kind": "string",
+          "group": "Audio"
+        },
+        {
+          "id": "audio_quality",
+          "names": [
+            "-aq"
+          ],
+          "description": "Set audio quality (codec-specific).",
+          "required": false,
+          "kind": "string",
+          "group": "Audio"
+        },
+        {
+          "id": "disable_video",
+          "names": [
+            "-vn"
+          ],
+          "description": "Disable video output (no video in output).",
+          "required": false,
+          "kind": "flag",
+          "group": "Video"
+        },
+        {
+          "id": "disable_audio",
+          "names": [
+            "-an"
+          ],
+          "description": "Disable audio output (no audio in output).",
+          "required": false,
+          "kind": "flag",
+          "group": "Audio"
+        },
+        {
+          "id": "disable_subtitle",
+          "names": [
+            "-sn"
+          ],
+          "description": "Disable subtitle output (no subtitles in output).",
+          "required": false,
+          "kind": "flag",
+          "group": "Subtitle"
+        },
+        {
+          "id": "disable_data",
+          "names": [
+            "-dn"
+          ],
+          "description": "Disable data stream output.",
+          "required": false,
+          "kind": "flag",
+          "group": "Data stream"
+        },
+        {
+          "id": "vframes",
+          "names": [
+            "-vframes"
+          ],
+          "description": "Set the number of video frames to output.",
+          "required": false,
+          "kind": "number",
+          "group": "Advanced Video"
+        },
+        {
+          "id": "aframes",
+          "names": [
+            "-aframes"
+          ],
+          "description": "Set the number of audio frames to output.",
+          "required": false,
+          "kind": "number",
+          "group": "Advanced Audio"
+        },
+        {
+          "id": "dframes",
+          "names": [
+            "-dframes"
+          ],
+          "description": "Set the number of data frames to output.",
+          "required": false,
+          "kind": "number",
+          "group": "Advanced per-file"
+        },
+        {
+          "id": "frames",
+          "names": [
+            "-frames"
+          ],
+          "description": "Set the number of frames to output. Can use :stream_spec.",
+          "required": false,
+          "kind": "number",
+          "group": "Advanced per-stream"
+        },
+        {
+          "id": "pixel_format",
+          "names": [
+            "-pix_fmt"
+          ],
+          "description": "Set pixel format. Can use :stream_spec.",
+          "required": false,
+          "kind": "string",
+          "group": "Advanced Video"
+        },
+        {
+          "id": "quality_scale",
+          "names": [
+            "-q",
+            "-qscale"
+          ],
+          "description": "Use fixed quality scale (VBR). Can use :stream_spec.",
+          "required": false,
+          "kind": "float",
+          "group": "Advanced per-stream"
+        },
+        {
+          "id": "pass_number",
+          "names": [
+            "-pass"
+          ],
+          "description": "Select the pass number (1 to 3) for multi-pass encoding. Can use :stream_spec.",
+          "required": false,
+          "kind": "number",
+          "group": "Advanced Video"
+        },
+        {
+          "id": "pass_logfile",
+          "names": [
+            "-passlogfile"
+          ],
+          "description": "Select two pass log file name prefix. Can use :stream_spec.",
+          "required": false,
+          "accepts": null,
+          "generates": [
+            "log"
+          ],
+          "transport": "local",
+          "confidence": 3,
+          "fill": "${SRC_DIR}/${SRC_NAME}.log",
+          "schema": {
+            "type": "string",
+            "format": "path",
+            "x-pm.extensions": [
+              "log"
+            ],
+            "x-pm.transport": "local"
+          },
+          "group": "Advanced Video"
+        },
+        {
+          "id": "target_type",
+          "names": [
+            "-target"
+          ],
+          "description": "Specify target file type (\"vcd\", \"svcd\", \"dvd\", \"dv\" or \"dv50\" with optional prefixes \"pal-\", \"ntsc-\" or \"film-\").",
+          "required": false,
+          "kind": "enum",
+          "choices": [
+            "vcd",
+            "svcd",
+            "dvd",
+            "dv",
+            "dv50",
+            "pal-vcd",
+            "ntsc-vcd",
+            "pal-svcd",
+            "ntsc-svcd",
+            "pal-dvd",
+            "ntsc-dvd",
+            "film-dv",
+            "pal-dv",
+            "ntsc-dv"
+          ],
+          "group": "Advanced per-file"
+        },
+        {
+          "id": "preset_file",
+          "names": [
+            "-fpre"
+          ],
+          "description": "Set options from indicated preset file.",
+          "required": false,
+          "accepts": null,
+          "generates": "any",
+          "transport": "local",
+          "confidence": 3,
+          "fill": "${SRC_DIR}/${SRC_NAME}.preset",
+          "group": "Advanced per-file"
+        },
+        {
+          "id": "attach_file",
+          "names": [
+            "-attach"
+          ],
+          "description": "Add an attachment to the output file.",
+          "required": false,
+          "accepts": "any",
+          "generates": null,
+          "transport": "local",
+          "confidence": 3,
+          "fill": "${CURRENT_SELECTION}",
+          "group": "Advanced per-file"
+        },
+        {
+          "id": "map",
+          "names": [
+            "-map"
+          ],
+          "description": "Set input stream mapping with syntax [-]input_file_id[:stream_specifier][,sync_file_id[:stream_specifier]].",
+          "required": false,
+          "kind": "string",
+          "group": "Advanced per-file"
+        },
+        {
+          "id": "map_metadata",
+          "names": [
+            "-map_metadata"
+          ],
+          "description": "Set metadata information of outfile from infile with syntax [outfile[,metadata]:infile[,metadata]].",
+          "required": false,
+          "kind": "string",
+          "group": "Advanced per-file"
+        },
+        {
+          "id": "map_chapters",
+          "names": [
+            "-map_chapters"
+          ],
+          "description": "Set chapters mapping from input file index.",
+          "required": false,
+          "kind": "number",
+          "group": "Advanced per-file"
+        },
+        {
+          "id": "file_size_limit",
+          "names": [
+            "-fs"
+          ],
+          "description": "Set the limit file size in bytes.",
+          "required": false,
+          "kind": "number",
+          "group": "Advanced per-file"
+        },
+        {
+          "id": "shortest",
+          "names": [
+            "-shortest"
+          ],
+          "description": "Finish encoding within shortest input.",
+          "required": false,
+          "kind": "flag",
+          "group": "Advanced per-file"
+        },
+        {
+          "id": "timestamp",
+          "names": [
+            "-timestamp"
+          ],
+          "description": "Set the recording timestamp ('now' to set the current time).",
+          "required": false,
+          "kind": "string",
+          "group": "Advanced per-file"
+        },
+        {
+          "id": "profile",
+          "names": [
+            "-profile"
+          ],
+          "description": "Set encoding profile. Can use :stream_spec.",
+          "required": false,
+          "kind": "string",
+          "group": "Advanced per-file"
+        },
+        {
+          "id": "mux_delay",
+          "names": [
+            "-mux_delay"
+          ],
+          "description": "Set the maximum demux-decode delay in seconds.",
+          "required": false,
+          "kind": "float"
+        },
+        {
+          "id": "mux_preload",
+          "names": [
+            "-mux_preload"
+          ],
+          "description": "Set the initial demux-decode delay in seconds.",
+          "required": false,
+          "kind": "float"
+        },
+        {
+          "id": "loglevel",
+          "names": [
+            "-v",
+            "-loglevel"
+          ],
+          "description": "Set logging level for the whole program.",
+          "required": false,
+          "kind": "string",
+          "group": "Global"
+        },
+        {
+          "id": "print_graphs",
+          "names": [
+            "-print_graphs"
+          ],
+          "description": "Print execution graph data to stderr.",
+          "required": false,
+          "kind": "flag",
+          "group": "Global"
+        },
+        {
+          "id": "print_graphs_file",
+          "names": [
+            "-print_graphs_file"
+          ],
+          "description": "Write execution graph data to the specified file.",
+          "required": false,
+          "accepts": null,
+          "generates": [
+            "json",
+            "xml",
+            "csv",
+            "ini",
+            "md",
+            "txt"
+          ],
+          "transport": "local",
+          "confidence": 3,
+          "fill": "${SRC_DIR}/${SRC_NAME}_graph.json",
+          "schema": {
+            "type": "string",
+            "format": "path",
+            "x-pm.extensions": [
+              "json",
+              "xml",
+              "csv",
+              "ini",
+              "md",
+              "txt"
+            ],
+            "x-pm.transport": "local"
+          },
+          "group": "Global"
+        },
+        {
+          "id": "print_graphs_format",
+          "names": [
+            "-print_graphs_format"
+          ],
+          "description": "Set the output printing format for graph data.",
+          "required": false,
+          "kind": "enum",
+          "choices": [
+            "default",
+            "compact",
+            "csv",
+            "flat",
+            "ini",
+            "json",
+            "xml",
+            "mermaid",
+            "mermaidhtml"
+          ],
+          "group": "Global"
+        },
+        {
+          "id": "stats",
+          "names": [
+            "-stats"
+          ],
+          "description": "Print progress report during encoding.",
+          "required": false,
+          "kind": "flag",
+          "group": "Global"
+        },
+        {
+          "id": "stats_period",
+          "names": [
+            "-stats_period"
+          ],
+          "description": "Set the period at which ffmpeg updates stats and -progress output.",
+          "required": false,
+          "kind": "string",
+          "group": "Advanced global"
+        },
+        {
+          "id": "progress_url",
+          "names": [
+            "-progress"
+          ],
+          "description": "Write program-readable progress information to URL or file.",
+          "required": false,
+          "accepts": null,
+          "generates": "any",
+          "transport": "local",
+          "confidence": 3,
+          "fill": "${SRC_DIR}/${SRC_NAME}_progress.txt",
+          "group": "Advanced global"
+        },
+        {
+          "id": "hide_banner",
+          "names": [
+            "-hide_banner"
+          ],
+          "description": "Do not show program banner.",
+          "required": false,
+          "kind": "flag",
+          "group": "Advanced global"
+        },
+        {
+          "id": "report",
+          "names": [
+            "-report"
+          ],
+          "description": "Generate a report file.",
+          "required": false,
+          "kind": "flag",
+          "group": "Advanced global"
+        },
+        {
+          "id": "timelimit",
+          "names": [
+            "-timelimit"
+          ],
+          "description": "Set max runtime in seconds in CPU user time.",
+          "required": false,
+          "kind": "number",
+          "group": "Advanced global"
+        },
+        {
+          "id": "benchmark",
+          "names": [
+            "-benchmark"
+          ],
+          "description": "Add timings for benchmarking.",
+          "required": false,
+          "kind": "flag",
+          "group": "Advanced global"
+        },
+        {
+          "id": "benchmark_all",
+          "names": [
+            "-benchmark_all"
+          ],
+          "description": "Add timings for each task for benchmarking.",
+          "required": false,
+          "kind": "flag",
+          "group": "Advanced global"
+        },
+        {
+          "id": "copyts",
+          "names": [
+            "-copyts"
+          ],
+          "description": "Copy timestamps from input to output.",
+          "required": false,
+          "kind": "flag",
+          "group": "Advanced global"
+        },
+        {
+          "id": "start_at_zero",
+          "names": [
+            "-start_at_zero"
+          ],
+          "description": "Shift input timestamps to start at 0 when using copyts.",
+          "required": false,
+          "kind": "flag",
+          "group": "Advanced global"
+        },
+        {
+          "id": "copytb",
+          "names": [
+            "-copytb"
+          ],
+          "description": "Copy input stream time base when stream copying.",
+          "required": false,
+          "kind": "string",
+          "group": "Advanced global"
+        },
+        {
+          "id": "bitexact",
+          "names": [
+            "-bitexact"
+          ],
+          "description": "Enable bitexact mode for reproducible builds.",
+          "required": false,
+          "kind": "flag",
+          "group": "Advanced per-file"
+        },
+        {
+          "id": "ignore_unknown",
+          "names": [
+            "-ignore_unknown"
+          ],
+          "description": "Ignore unknown stream types.",
+          "required": false,
+          "kind": "flag",
+          "group": "Advanced global"
+        },
+        {
+          "id": "copy_unknown",
+          "names": [
+            "-copy_unknown"
+          ],
+          "description": "Copy unknown stream types.",
+          "required": false,
+          "kind": "flag",
+          "group": "Advanced global"
+        },
+        {
+          "id": "thread_queue_size",
+          "names": [
+            "-thread_queue_size"
+          ],
+          "description": "Set the maximum number of queued packets from the demuxer.",
+          "required": false,
+          "kind": "number",
+          "group": "Advanced per-file"
+        },
+        {
+          "id": "stream_loop",
+          "names": [
+            "-stream_loop"
+          ],
+          "description": "Set number of times input stream shall be looped.",
+          "required": false,
+          "kind": "number",
+          "group": "Advanced per-file"
+        },
+        {
+          "id": "readrate",
+          "names": [
+            "-readrate"
+          ],
+          "description": "Read input at specified rate (speed factor).",
+          "required": false,
+          "kind": "float",
+          "group": "Advanced per-file"
+        },
+        {
+          "id": "itsoffset",
+          "names": [
+            "-itsooffset"
+          ],
+          "description": "Set the input timestamp offset.",
+          "required": false,
+          "kind": "string"
+        },
+        {
+          "id": "sseof",
+          "names": [
+            "-sseof"
+          ],
+          "description": "Set the start time offset relative to EOF.",
+          "required": false,
+          "kind": "string",
+          "group": "Advanced per-file"
+        },
+        {
+          "id": "find_stream_info",
+          "names": [
+            "-find_stream_info"
+          ],
+          "description": "Read and decode the streams to fill missing information with heuristics.",
+          "required": false,
+          "kind": "flag",
+          "group": "Advanced per-file"
+        },
+        {
+          "id": "filter_complex",
+          "names": [
+            "-filter_complex",
+            "-lavfi"
+          ],
+          "description": "Create a complex filtergraph with full graph description syntax.",
+          "required": false,
+          "kind": "string",
+          "group": "Advanced global"
+        },
+        {
+          "id": "auto_conversion_filters",
+          "names": [
+            "-auto_conversion_filters"
+          ],
+          "description": "Enable automatic conversion filters globally.",
+          "required": false,
+          "kind": "flag",
+          "group": "Advanced global"
+        },
+        {
+          "id": "max_alloc",
+          "names": [
+            "-max_alloc"
+          ],
+          "description": "Set maximum size of a single allocated block in bytes.",
+          "required": false,
+          "kind": "number",
+          "group": "Advanced global"
+        },
+        {
+          "id": "cpuflags",
+          "names": [
+            "-cpuflags"
+          ],
+          "description": "Force specific CPU flags.",
+          "required": false,
+          "kind": "string",
+          "group": "Advanced global"
+        },
+        {
+          "id": "cpucount",
+          "names": [
+            "-cpucount"
+          ],
+          "description": "Force specific CPU count.",
+          "required": false,
+          "kind": "number",
+          "group": "Advanced global"
+        },
+        {
+          "id": "init_hw_device",
+          "names": [
+            "-init_hw_device"
+          ],
+          "description": "Initialize hardware device with args.",
+          "required": false,
+          "kind": "string",
+          "group": "Advanced global"
+        },
+        {
+          "id": "filter_hw_device",
+          "names": [
+            "-filter_hw_device"
+          ],
+          "description": "Set hardware device used when filtering.",
+          "required": false,
+          "kind": "string",
+          "group": "Advanced global"
+        },
+        {
+          "id": "hwaccel",
+          "names": [
+            "-hwaccel"
+          ],
+          "description": "Use HW accelerated decoding. Can use :stream_spec.",
+          "required": false,
+          "kind": "string",
+          "group": "Advanced Video"
+        },
+        {
+          "id": "hwaccel_device",
+          "names": [
+            "-hwaccel_device"
+          ],
+          "description": "Select a device for HW acceleration. Can use :stream_spec.",
+          "required": false,
+          "kind": "string",
+          "group": "Advanced Video"
+        },
+        {
+          "id": "hwaccel_output_format",
+          "names": [
+            "-hwaccel_output_format"
+          ],
+          "description": "Select output format used with HW accelerated decoding. Can use :stream_spec.",
+          "required": false,
+          "kind": "string",
+          "group": "Advanced Video"
+        },
+        {
+          "id": "vaapi_device",
+          "names": [
+            "-vaapi_device"
+          ],
+          "description": "Set VAAPI hardware device (DirectX adapter index, DRM path or X11 display name).",
+          "required": false,
+          "kind": "string",
+          "group": "Advanced global"
+        },
+        {
+          "id": "qsv_device",
+          "names": [
+            "-qsv_device"
+          ],
+          "description": "Set QSV hardware device (DirectX adapter index, DRM path or X11 display name).",
+          "required": false,
+          "kind": "string",
+          "group": "Advanced global"
+        },
+        {
+          "id": "force_key_frames",
+          "names": [
+            "-force_key_frames"
+          ],
+          "description": "Force key frames at specified timestamps. Can use :stream_spec.",
+          "required": false,
+          "kind": "string",
+          "group": "Advanced Video"
+        },
+        {
+          "id": "fps_mode",
+          "names": [
+            "-fps_mode"
+          ],
+          "description": "Set framerate mode for matching video streams. Can use :stream_spec.",
+          "required": false,
+          "kind": "string",
+          "group": "Advanced global"
+        },
+        {
+          "id": "force_fps",
+          "names": [
+            "-force_fps"
+          ],
+          "description": "Force the selected framerate, disable the best supported framerate selection. Can use :stream_spec.",
+          "required": false,
+          "kind": "flag",
+          "group": "Advanced Video"
+        },
+        {
+          "id": "autorotate",
+          "names": [
+            "-autorotate"
+          ],
+          "description": "Automatically insert correct rotate filters. Can use :stream_spec.",
+          "required": false,
+          "kind": "string",
+          "group": "Advanced Video"
+        },
+        {
+          "id": "autoscale",
+          "names": [
+            "-autoscale"
+          ],
+          "description": "Automatically insert a scale filter at the end of the filter graph. Can use :stream_spec.",
+          "required": false,
+          "kind": "string",
+          "group": "Advanced Video"
+        },
+        {
+          "id": "timecode",
+          "names": [
+            "-timecode"
+          ],
+          "description": "Set initial TimeCode value (hh:mm:ss[:;.]ff).",
+          "required": false,
+          "kind": "string",
+          "group": "Advanced Video"
+        },
+        {
+          "id": "vpre",
+          "names": [
+            "-vpre"
+          ],
+          "description": "Set the video options to the indicated preset.",
+          "required": false,
+          "kind": "string",
+          "group": "Advanced Video"
+        },
+        {
+          "id": "apre",
+          "names": [
+            "-apre"
+          ],
+          "description": "Set the audio options to the indicated preset.",
+          "required": false,
+          "kind": "string",
+          "group": "Advanced Audio"
+        },
+        {
+          "id": "spre",
+          "names": [
+            "-spre"
+          ],
+          "description": "Set the subtitle options to the indicated preset.",
+          "required": false,
+          "kind": "string",
+          "group": "Advanced Subtitle"
+        },
+        {
+          "id": "pre",
+          "names": [
+            "-pre"
+          ],
+          "description": "Preset name. Can use :stream_spec.",
+          "required": false,
+          "kind": "string",
+          "group": "Advanced per-stream"
+        },
+        {
+          "id": "vtag",
+          "names": [
+            "-vtag"
+          ],
+          "description": "Force video codec tag/fourcc.",
+          "required": false,
+          "kind": "string",
+          "group": "Advanced Video"
+        },
+        {
+          "id": "atag",
+          "names": [
+            "-atag"
+          ],
+          "description": "Force audio tag/fourcc.",
+          "required": false,
+          "kind": "string",
+          "group": "Advanced Audio"
+        },
+        {
+          "id": "stag",
+          "names": [
+            "-stag"
+          ],
+          "description": "Force subtitle tag/fourcc.",
+          "required": false,
+          "kind": "string",
+          "group": "Advanced Subtitle"
+        },
+        {
+          "id": "tag",
+          "names": [
+            "-tag"
+          ],
+          "description": "Force codec tag/fourcc. Can use :stream_spec.",
+          "required": false,
+          "kind": "string",
+          "group": "Advanced per-stream"
+        },
+        {
+          "id": "sample_fmt",
+          "names": [
+            "-sample_fmt"
+          ],
+          "description": "Set sample format. Can use :stream_spec.",
+          "required": false,
+          "kind": "string",
+          "group": "Advanced Audio"
+        },
+        {
+          "id": "channel_layout",
+          "names": [
+            "-channel_layout",
+            "-ch_layout"
+          ],
+          "description": "Set channel layout. Can use :stream_spec.",
+          "required": false,
+          "kind": "string",
+          "group": "Advanced Audio"
+        },
+        {
+          "id": "canvas_size",
+          "names": [
+            "-canvas_size"
+          ],
+          "description": "Set canvas size (WxH or abbreviation). Can use :stream_spec.",
+          "required": false,
+          "kind": "string",
+          "group": "Advanced Subtitle"
+        },
+        {
+          "id": "display_rotation",
+          "names": [
+            "-display_rotation"
+          ],
+          "description": "Set pure counter-clockwise rotation in degrees for stream(s). Can use :stream_spec.",
+          "required": false,
+          "kind": "float",
+          "group": "Advanced Video"
+        },
+        {
+          "id": "display_hflip",
+          "names": [
+            "-display_hflip"
+          ],
+          "description": "Set display horizontal flip for stream(s). Can use :stream_spec.",
+          "required": false,
+          "kind": "flag",
+          "group": "Advanced Video"
+        },
+        {
+          "id": "display_vflip",
+          "names": [
+            "-display_vflip"
+          ],
+          "description": "Set display vertical flip for stream(s). Can use :stream_spec.",
+          "required": false,
+          "kind": "flag",
+          "group": "Advanced Video"
+        },
+        {
+          "id": "dump_attachment",
+          "names": [
+            "-dump_attachment"
+          ],
+          "description": "Extract an attachment into a file. Can use :spec.",
+          "required": false,
+          "accepts": null,
+          "generates": "any",
+          "transport": "local",
+          "confidence": 3,
+          "fill": "${SRC_DIR}/${SRC_NAME}_attachment.bin",
+          "group": "Advanced per-file"
+        },
+        {
+          "id": "sdp_file",
+          "names": [
+            "-sdp_file"
+          ],
+          "description": "Specify a file in which to print SDP information.",
+          "required": false,
+          "accepts": null,
+          "generates": [
+            "sdp"
+          ],
+          "transport": "local",
+          "confidence": 3,
+          "fill": "${SRC_DIR}/${SRC_NAME}.sdp",
+          "schema": {
+            "type": "string",
+            "format": "path",
+            "x-pm.extensions": [
+              "sdp"
+            ],
+            "x-pm.transport": "local"
+          },
+          "group": "Advanced global"
+        },
+        {
+          "id": "vstats_file",
+          "names": [
+            "-vstats_file"
+          ],
+          "description": "Dump video coding statistics to file.",
+          "required": false,
+          "accepts": null,
+          "generates": "any",
+          "transport": "local",
+          "confidence": 3,
+          "fill": "${SRC_DIR}/${SRC_NAME}.vstats",
+          "group": "Advanced global"
+        },
+        {
+          "id": "bsf",
+          "names": [
+            "-bsf"
+          ],
+          "description": "A comma-separated list of bitstream filters. Can use :stream_spec.",
+          "required": false,
+          "kind": "string",
+          "group": "Advanced per-stream"
+        },
+        {
+          "id": "fix_sub_duration",
+          "names": [
+            "-fix_sub_duration"
+          ],
+          "description": "Fix subtitles duration. Can use :stream_spec.",
+          "required": false,
+          "kind": "string",
+          "group": "Advanced Subtitle"
+        },
+        {
+          "id": "max_error_rate",
+          "names": [
+            "-max_error_rate"
+          ],
+          "description": "Ratio of decoding errors (0.0: no errors, 1.0: 100% errors) above which ffmpeg returns an error instead of success.",
+          "required": false,
+          "kind": "float",
+          "group": "Advanced global"
+        }
+      ]
+    }
+  }
+}

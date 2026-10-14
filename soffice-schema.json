@@ -1,0 +1,462 @@
+{
+  "bundleVersion": 1,
+  "provenance": "cli",
+  "trust": "generated",
+  "description": "LibreOffice office suite: soffice [argument...] where argument is switches, switch parameters and document URIs (filenames).",
+  "schemas": {},
+  "commands": {
+    "soffice": {
+      "description": "Opens the start center if used without any arguments; tries to open files in suitable components or creates new documents of specified kind.",
+      "options": [
+        {
+          "id": "input",
+          "names": [
+            "file"
+          ],
+          "description": "Tries to open the file (files) in the components suitable for them.",
+          "required": false,
+          "accepts": [
+            "odt",
+            "doc",
+            "docx",
+            "rtf",
+            "txt",
+            "ods",
+            "xls",
+            "xlsx",
+            "csv",
+            "odp",
+            "ppt",
+            "pptx",
+            "pdf",
+            "html",
+            "odg",
+            "svg",
+            "odb",
+            "odf",
+            "tex"
+          ],
+          "generates": null,
+          "transport": "local",
+          "confidence": 4,
+          "fill": "${CURRENT_SELECTION}",
+          "schema": {
+            "type": "string",
+            "format": "path",
+            "x-pm.extensions": [
+              "odt",
+              "doc",
+              "docx",
+              "rtf",
+              "txt",
+              "ods",
+              "xls",
+              "xlsx",
+              "csv",
+              "odp",
+              "ppt",
+              "pptx",
+              "pdf",
+              "html",
+              "odg",
+              "svg",
+              "odb",
+              "odf",
+              "tex"
+            ],
+            "x-pm.transport": "local"
+          },
+          "group": "Using without special arguments"
+        },
+        {
+          "id": "infilter",
+          "names": [
+            "--infilter"
+          ],
+          "description": "Force an input filter type if possible.",
+          "required": false,
+          "kind": "string",
+          "group": "General arguments"
+        },
+        {
+          "id": "pidfile",
+          "names": [
+            "--pidfile"
+          ],
+          "description": "Store soffice.bin pid to file.",
+          "required": false,
+          "accepts": null,
+          "generates": [
+            "txt"
+          ],
+          "transport": "local",
+          "confidence": 3,
+          "fill": "${SRC_DIR}/${SRC_NAME}.pid",
+          "schema": {
+            "type": "string",
+            "format": "path",
+            "x-pm.extensions": [
+              "txt"
+            ],
+            "x-pm.transport": "local"
+          },
+          "group": "General arguments"
+        },
+        {
+          "id": "quickstart",
+          "names": [
+            "--quickstart"
+          ],
+          "description": "Activates the Quickstarter service.",
+          "required": false,
+          "kind": "flag",
+          "group": "General arguments"
+        },
+        {
+          "id": "nolockcheck",
+          "names": [
+            "--nolockcheck"
+          ],
+          "description": "Disables check for remote instances using one installation.",
+          "required": false,
+          "kind": "flag",
+          "group": "General arguments"
+        },
+        {
+          "id": "nologo",
+          "names": [
+            "--nologo"
+          ],
+          "description": "Disables the splash screen at program start.",
+          "required": false,
+          "kind": "flag",
+          "group": "User/programmatic interface control"
+        },
+        {
+          "id": "minimized",
+          "names": [
+            "--minimized"
+          ],
+          "description": "Starts minimized. The splash screen is not displayed.",
+          "required": false,
+          "kind": "flag",
+          "group": "User/programmatic interface control"
+        },
+        {
+          "id": "nodefault",
+          "names": [
+            "--nodefault"
+          ],
+          "description": "Starts without displaying anything except the splash screen.",
+          "required": false,
+          "kind": "flag",
+          "group": "User/programmatic interface control"
+        },
+        {
+          "id": "invisible",
+          "names": [
+            "--invisible"
+          ],
+          "description": "Starts in invisible mode. Neither the start-up logo nor the initial program window will be visible.",
+          "required": false,
+          "kind": "flag",
+          "group": "User/programmatic interface control"
+        },
+        {
+          "id": "headless",
+          "names": [
+            "--headless"
+          ],
+          "description": "Starts in headless mode which allows using the application without GUI.",
+          "required": false,
+          "kind": "flag",
+          "group": "User/programmatic interface control"
+        },
+        {
+          "id": "norestore",
+          "names": [
+            "--norestore"
+          ],
+          "description": "Disables restart and file recovery after a system crash.",
+          "required": false,
+          "kind": "flag",
+          "group": "User/programmatic interface control"
+        },
+        {
+          "id": "safe-mode",
+          "names": [
+            "--safe-mode"
+          ],
+          "description": "Starts in safe mode, i.e. starts temporarily with a fresh user profile.",
+          "required": false,
+          "kind": "flag",
+          "group": "User/programmatic interface control"
+        },
+        {
+          "id": "accept",
+          "names": [
+            "--accept"
+          ],
+          "description": "Specifies a UNO connect-string to create a UNO acceptor through which other programs can connect to access the API.",
+          "required": false,
+          "kind": "string",
+          "group": "User/programmatic interface control"
+        },
+        {
+          "id": "unaccept",
+          "names": [
+            "--unaccept"
+          ],
+          "description": "Closes an acceptor that was created with --accept.",
+          "required": false,
+          "kind": "string",
+          "group": "The syntax of the {connect-string} is"
+        },
+        {
+          "id": "language",
+          "names": [
+            "--language"
+          ],
+          "description": "Uses specified language, if language is not selected yet for UI. The lang is a tag of the language in IETF language tag.",
+          "required": false,
+          "kind": "string",
+          "group": "The syntax of the {connect-string} is"
+        },
+        {
+          "id": "terminate_after_init",
+          "names": [
+            "--terminate_after_init"
+          ],
+          "description": "Exit after initialization complete (no documents loaded).",
+          "required": false,
+          "kind": "flag",
+          "group": "Developer arguments"
+        },
+        {
+          "id": "writer",
+          "names": [
+            "--writer"
+          ],
+          "description": "Creates an empty Writer document.",
+          "required": false,
+          "kind": "flag",
+          "group": "New document creation arguments"
+        },
+        {
+          "id": "calc",
+          "names": [
+            "--calc"
+          ],
+          "description": "Creates an empty Calc document.",
+          "required": false,
+          "kind": "flag",
+          "group": "New document creation arguments"
+        },
+        {
+          "id": "draw",
+          "names": [
+            "--draw"
+          ],
+          "description": "Creates an empty Draw document.",
+          "required": false,
+          "kind": "flag",
+          "group": "New document creation arguments"
+        },
+        {
+          "id": "impress",
+          "names": [
+            "--impress"
+          ],
+          "description": "Creates an empty Impress document.",
+          "required": false,
+          "kind": "flag",
+          "group": "New document creation arguments"
+        },
+        {
+          "id": "base",
+          "names": [
+            "--base"
+          ],
+          "description": "Creates a new database.",
+          "required": false,
+          "kind": "flag",
+          "group": "New document creation arguments"
+        },
+        {
+          "id": "global",
+          "names": [
+            "--global"
+          ],
+          "description": "Creates an empty Writer master (global) document.",
+          "required": false,
+          "kind": "flag",
+          "group": "New document creation arguments"
+        },
+        {
+          "id": "math",
+          "names": [
+            "--math"
+          ],
+          "description": "Creates an empty Math document (formula).",
+          "required": false,
+          "kind": "flag",
+          "group": "New document creation arguments"
+        },
+        {
+          "id": "web",
+          "names": [
+            "--web"
+          ],
+          "description": "Creates an empty HTML document.",
+          "required": false,
+          "kind": "flag",
+          "group": "New document creation arguments"
+        },
+        {
+          "id": "n",
+          "names": [
+            "-n"
+          ],
+          "description": "Treats following files as templates for creation of new documents.",
+          "required": false,
+          "kind": "flag",
+          "group": "File open arguments"
+        },
+        {
+          "id": "o",
+          "names": [
+            "-o"
+          ],
+          "description": "Opens following files for editing, regardless whether they are templates or not.",
+          "required": false,
+          "kind": "flag",
+          "group": "File open arguments"
+        },
+        {
+          "id": "pt",
+          "names": [
+            "--pt"
+          ],
+          "description": "Prints following files to the printer Printername, after which those files are closed.",
+          "required": false,
+          "kind": "string",
+          "group": "File open arguments"
+        },
+        {
+          "id": "p",
+          "names": [
+            "-p"
+          ],
+          "description": "Prints following files to the default printer, after which those files are closed.",
+          "required": false,
+          "kind": "flag",
+          "group": "File open arguments"
+        },
+        {
+          "id": "view",
+          "names": [
+            "--view"
+          ],
+          "description": "Opens following files in viewer mode (read-only).",
+          "required": false,
+          "kind": "flag",
+          "group": "File open arguments"
+        },
+        {
+          "id": "show",
+          "names": [
+            "--show"
+          ],
+          "description": "Opens and starts the slideshow of the following presentation documents immediately. Files are closed after the showing.",
+          "required": false,
+          "kind": "string",
+          "group": "File open arguments"
+        },
+        {
+          "id": "convert-to",
+          "names": [
+            "--convert-to"
+          ],
+          "description": "Batch convert files (implies --headless). OutputFileExtension[:OutputFilterName].",
+          "required": false,
+          "kind": "string",
+          "group": "File open arguments"
+        },
+        {
+          "id": "outdir",
+          "names": [
+            "--outdir"
+          ],
+          "description": "Output directory for converted or printed files.",
+          "required": false,
+          "accepts": "none",
+          "generates": "directory",
+          "transport": "local",
+          "confidence": 5,
+          "fill": "${SRC_DIR}",
+          "group": "File open arguments"
+        },
+        {
+          "id": "convert-images-to",
+          "names": [
+            "--convert-images-to"
+          ],
+          "description": "Target filter format for all images written to the output format when converting.",
+          "required": false,
+          "kind": "string",
+          "group": "effective. For example"
+        },
+        {
+          "id": "print-to-file",
+          "names": [
+            "--print-to-file"
+          ],
+          "description": "Batch print files to file.",
+          "required": false,
+          "kind": "flag",
+          "group": "File open arguments"
+        },
+        {
+          "id": "printer-name",
+          "names": [
+            "--printer-name"
+          ],
+          "description": "Printer name for print-to-file output.",
+          "required": false,
+          "kind": "string",
+          "group": "File open arguments"
+        },
+        {
+          "id": "cat",
+          "names": [
+            "--cat"
+          ],
+          "description": "Dump text content of the following files to console (implies --headless).",
+          "required": false,
+          "kind": "flag",
+          "group": "effective. For example"
+        },
+        {
+          "id": "script-cat",
+          "names": [
+            "--script-cat"
+          ],
+          "description": "Dump text content of any scripts embedded in the files to console (implies --headless).",
+          "required": false,
+          "kind": "flag",
+          "group": "effective. For example"
+        },
+        {
+          "id": "env",
+          "names": [
+            "-env:"
+          ],
+          "description": "Set a bootstrap variable.",
+          "required": false,
+          "kind": "string",
+          "group": "effective. For example"
+        }
+      ]
+    }
+  }
+}

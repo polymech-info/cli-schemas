@@ -1,0 +1,1482 @@
+{
+  "bundleVersion": 1,
+  "provenance": "cli",
+  "trust": "generated",
+  "description": "HandBrakeCLI [options] -i <source> -o <destination>",
+  "schemas": {},
+  "commands": {
+    "HandBrakeCLI": {
+      "description": "Video transcoder that converts media from almost any format to a selection of modern, widely supported codecs.",
+      "options": [
+        {
+          "id": "input",
+          "names": [
+            "-i",
+            "--input"
+          ],
+          "description": "Set input file or device (\"source\")",
+          "required": true,
+          "accepts": [
+            "mp4",
+            "mkv",
+            "mov",
+            "webm",
+            "avi",
+            "mpg",
+            "mpeg",
+            "wmv",
+            "flv",
+            "m2ts",
+            "ts",
+            "mts",
+            "vob",
+            "ifo",
+            "iso",
+            "dvd",
+            "bluray",
+            "mp3",
+            "wav",
+            "aac",
+            "flac",
+            "ogg"
+          ],
+          "generates": null,
+          "transport": "local",
+          "confidence": 4,
+          "fill": "${CURRENT_SELECTION}",
+          "schema": {
+            "type": "string",
+            "format": "path",
+            "x-pm.extensions": [
+              "mp4",
+              "mkv",
+              "mov",
+              "webm",
+              "avi",
+              "mpg",
+              "mpeg",
+              "wmv",
+              "flv",
+              "m2ts",
+              "ts",
+              "mts",
+              "vob",
+              "ifo",
+              "iso",
+              "dvd",
+              "bluray",
+              "mp3",
+              "wav",
+              "aac",
+              "flac",
+              "ogg"
+            ],
+            "x-pm.transport": "local"
+          },
+          "group": "Source"
+        },
+        {
+          "id": "output",
+          "names": [
+            "-o",
+            "--output"
+          ],
+          "description": "Set destination file name",
+          "required": true,
+          "accepts": null,
+          "generates": [
+            "mp4",
+            "mkv",
+            "mov",
+            "webm"
+          ],
+          "transport": "local",
+          "confidence": 5,
+          "fill": "${SRC_DIR}/${SRC_NAME}.mp4",
+          "schema": {
+            "type": "string",
+            "format": "path",
+            "x-pm.extensions": [
+              "mp4",
+              "mkv",
+              "mov",
+              "webm"
+            ],
+            "x-pm.transport": "local"
+          },
+          "group": "Destination"
+        },
+        {
+          "id": "format",
+          "names": [
+            "-f",
+            "--format"
+          ],
+          "description": "Select container format: av_mp4, av_mov, av_mkv, av_webm (default: auto-detected from destination file name)",
+          "required": false,
+          "kind": "enum",
+          "choices": [
+            "av_mp4",
+            "av_mov",
+            "av_mkv",
+            "av_webm"
+          ],
+          "group": "Destination"
+        },
+        {
+          "id": "title",
+          "names": [
+            "-t",
+            "--title"
+          ],
+          "description": "Select a title to encode (0 to scan all titles only, default: 1)",
+          "required": false,
+          "kind": "number",
+          "group": "Source"
+        },
+        {
+          "id": "chapters",
+          "names": [
+            "-c",
+            "--chapters"
+          ],
+          "description": "Select chapters (e.g. \"1-3\" for chapters 1 to 3 or \"3\" for chapter 3 only, default: all chapters)",
+          "required": false,
+          "kind": "string",
+          "group": "Source"
+        },
+        {
+          "id": "markers",
+          "names": [
+            "-m",
+            "--markers"
+          ],
+          "description": "Add chapter markers",
+          "required": false,
+          "kind": "flag",
+          "group": "Destination"
+        },
+        {
+          "id": "no-markers",
+          "names": [
+            "--no-markers"
+          ],
+          "description": "Disable preset chapter markers",
+          "required": false,
+          "kind": "flag",
+          "group": "Destination"
+        },
+        {
+          "id": "optimize",
+          "names": [
+            "-O",
+            "--optimize"
+          ],
+          "description": "Optimize MP4 files for HTTP streaming (fast start, s.s. rewrite file to place MOOV atom at beginning)",
+          "required": false,
+          "kind": "flag",
+          "group": "Destination"
+        },
+        {
+          "id": "no-optimize",
+          "names": [
+            "--no-optimize"
+          ],
+          "description": "Disable preset 'optimize'",
+          "required": false,
+          "kind": "flag",
+          "group": "Destination"
+        },
+        {
+          "id": "ipod-atom",
+          "names": [
+            "-I",
+            "--ipod-atom"
+          ],
+          "description": "Add iPod 5G compatibility atom to MP4 container",
+          "required": false,
+          "kind": "flag",
+          "group": "Destination"
+        },
+        {
+          "id": "no-ipod-atom",
+          "names": [
+            "--no-ipod-atom"
+          ],
+          "description": "Disable iPod 5G atom",
+          "required": false,
+          "kind": "flag",
+          "group": "Destination"
+        },
+        {
+          "id": "align-av",
+          "names": [
+            "--align-av"
+          ],
+          "description": "Add audio silence or black video frames to start of streams so that all streams start at exactly the same time",
+          "required": false,
+          "kind": "flag",
+          "group": "Destination"
+        },
+        {
+          "id": "keep-metadata",
+          "names": [
+            "--keep-metadata"
+          ],
+          "description": "Preserve the source's common metadata",
+          "required": false,
+          "kind": "flag",
+          "group": "Destination"
+        },
+        {
+          "id": "no-metadata",
+          "names": [
+            "--no-metadata"
+          ],
+          "description": "Disable preset 'keep-metadata'",
+          "required": false,
+          "kind": "flag",
+          "group": "Destination"
+        },
+        {
+          "id": "inline-parameter-sets",
+          "names": [
+            "--inline-parameter-sets"
+          ],
+          "description": "Create adaptive streaming compatible output. Inserts parameter sets (SPS and PPS) inline in the video stream before each IDR.",
+          "required": false,
+          "kind": "flag",
+          "group": "Destination"
+        },
+        {
+          "id": "encoder",
+          "names": [
+            "-e",
+            "--encoder"
+          ],
+          "description": "Select video encoder: svt_av1, svt_av1_10bit, ffv1, x264, x264_10bit, nvenc_h264, x265, x265_10bit, x265_12bit, nvenc_h265, nvenc_h265_10bit, mpeg4, mpeg2, VP8, VP9, VP9_10bit, dnxhr, dnxhr_10bit, ff_prores, theora",
+          "required": false,
+          "kind": "enum",
+          "choices": [
+            "svt_av1",
+            "svt_av1_10bit",
+            "ffv1",
+            "x264",
+            "x264_10bit",
+            "nvenc_h264",
+            "x265",
+            "x265_10bit",
+            "x265_12bit",
+            "nvenc_h265",
+            "nvenc_h265_10bit",
+            "mpeg4",
+            "mpeg2",
+            "VP8",
+            "VP9",
+            "VP9_10bit",
+            "dnxhr",
+            "dnxhr_10bit",
+            "ff_prores",
+            "theora"
+          ],
+          "group": "Video"
+        },
+        {
+          "id": "encoder-preset",
+          "names": [
+            "--encoder-preset"
+          ],
+          "description": "Adjust video encoding settings for a particular speed/efficiency tradeoff (encoder-specific)",
+          "required": false,
+          "kind": "string",
+          "group": "Video"
+        },
+        {
+          "id": "encoder-tune",
+          "names": [
+            "--encoder-tune"
+          ],
+          "description": "Adjust video encoding settings for a particular type of source or situation (encoder-specific)",
+          "required": false,
+          "kind": "string",
+          "group": "Video"
+        },
+        {
+          "id": "encopts",
+          "names": [
+            "-x",
+            "--encopts"
+          ],
+          "description": "Specify advanced encoding options in the same style as mencoder (all encoders except theora): option1=value1:option2=value2",
+          "required": false,
+          "kind": "string",
+          "group": "Video"
+        },
+        {
+          "id": "encoder-profile",
+          "names": [
+            "--encoder-profile"
+          ],
+          "description": "Ensure compliance with the requested codec profile (encoder-specific)",
+          "required": false,
+          "kind": "string",
+          "group": "style as mencoder"
+        },
+        {
+          "id": "encoder-level",
+          "names": [
+            "--encoder-level"
+          ],
+          "description": "Ensures compliance with the requested codec level (encoder-specific)",
+          "required": false,
+          "kind": "string",
+          "group": "style as mencoder"
+        },
+        {
+          "id": "quality",
+          "names": [
+            "-q",
+            "--quality"
+          ],
+          "description": "Set video quality (e.g. 22.0)",
+          "required": false,
+          "kind": "float",
+          "group": "style as mencoder"
+        },
+        {
+          "id": "video-bitrate",
+          "names": [
+            "-b",
+            "--vb"
+          ],
+          "description": "Set video bitrate in kbit/s (default: 1000)",
+          "required": false,
+          "kind": "number",
+          "group": "style as mencoder"
+        },
+        {
+          "id": "multi-pass",
+          "names": [
+            "--multi-pass"
+          ],
+          "description": "Use multi-pass mode",
+          "required": false,
+          "kind": "flag",
+          "group": "style as mencoder"
+        },
+        {
+          "id": "no-multi-pass",
+          "names": [
+            "--no-multi-pass"
+          ],
+          "description": "Disable multi-pass mode",
+          "required": false,
+          "kind": "flag",
+          "group": "style as mencoder"
+        },
+        {
+          "id": "turbo",
+          "names": [
+            "-T",
+            "--turbo"
+          ],
+          "description": "When using multi-pass use \"turbo\" options on the first pass to improve speed (works with x264 and x265)",
+          "required": false,
+          "kind": "flag",
+          "group": "style as mencoder"
+        },
+        {
+          "id": "no-turbo",
+          "names": [
+            "--no-turbo"
+          ],
+          "description": "Disable 2-pass mode's \"turbo\" first pass",
+          "required": false,
+          "kind": "flag",
+          "group": "style as mencoder"
+        },
+        {
+          "id": "rate",
+          "names": [
+            "-r",
+            "--rate"
+          ],
+          "description": "Set video framerate (5/10/12/15/20/23.976/24/25/29.97/30/48/50/59.94/60/72/75/90/100/120 or a number between 1 and 1000)",
+          "required": false,
+          "kind": "float",
+          "group": "style as mencoder"
+        },
+        {
+          "id": "vfr",
+          "names": [
+            "--vfr"
+          ],
+          "description": "Select variable frame rate control. VFR preserves the source timing.",
+          "required": false,
+          "kind": "flag",
+          "group": "style as mencoder"
+        },
+        {
+          "id": "cfr",
+          "names": [
+            "--cfr"
+          ],
+          "description": "Select constant frame rate control. CFR makes the output constant rate at the rate given by the -r flag.",
+          "required": false,
+          "kind": "flag",
+          "group": "style as mencoder"
+        },
+        {
+          "id": "pfr",
+          "names": [
+            "--pfr"
+          ],
+          "description": "Select peak-limited frame rate control. PFR doesn't allow the rate to go over the rate specified with the -r flag but won't change the source timing if it's below that rate.",
+          "required": false,
+          "kind": "flag",
+          "group": "style as mencoder"
+        },
+        {
+          "id": "hdr-dynamic-metadata",
+          "names": [
+            "--hdr-dynamic-metadata"
+          ],
+          "description": "Set the kind of HDR dynamic metadata to preserve: hdr10plus, dolbyvision, all",
+          "required": false,
+          "kind": "enum",
+          "choices": [
+            "hdr10plus",
+            "dolbyvision",
+            "all"
+          ],
+          "group": "style as mencoder"
+        },
+        {
+          "id": "no-hdr-dynamic-metadata",
+          "names": [
+            "--no-hdr-dynamic-metadata"
+          ],
+          "description": "Disable HDR dynamic metadata passthru",
+          "required": false,
+          "kind": "flag",
+          "group": "Set the kind of HDR dynamic metadata to preserve"
+        },
+        {
+          "id": "enable-hw-decoding",
+          "names": [
+            "--enable-hw-decoding"
+          ],
+          "description": "Use 'nvdec' to enable NVDec or 'qsv' to enable QSV decoding",
+          "required": false,
+          "kind": "string",
+          "group": "Set the kind of HDR dynamic metadata to preserve"
+        },
+        {
+          "id": "disable-hw-decoding",
+          "names": [
+            "--disable-hw-decoding"
+          ],
+          "description": "Disable hardware decoding of the video track, forcing software decoding instead",
+          "required": false,
+          "kind": "flag",
+          "group": "Set the kind of HDR dynamic metadata to preserve"
+        },
+        {
+          "id": "audio-lang-list",
+          "names": [
+            "--audio-lang-list"
+          ],
+          "description": "Specify a comma separated list of audio languages you would like to select from the source title by ISO 639-2 code (e.g. fre, eng, spa). Use code 'any' to match all languages.",
+          "required": false,
+          "kind": "string",
+          "group": "Audio"
+        },
+        {
+          "id": "all-audio",
+          "names": [
+            "--all-audio"
+          ],
+          "description": "Select all audio tracks matching languages in the specified language list (--audio-lang-list). Any language if list is not specified.",
+          "required": false,
+          "kind": "flag",
+          "group": "Audio"
+        },
+        {
+          "id": "first-audio",
+          "names": [
+            "--first-audio"
+          ],
+          "description": "Select first audio track matching languages in the specified language list (--audio-lang-list). Any language if list is not specified.",
+          "required": false,
+          "kind": "flag",
+          "group": "Audio"
+        },
+        {
+          "id": "audio",
+          "names": [
+            "-a",
+            "--audio"
+          ],
+          "description": "Select audio track(s), separated by commas (\"none\" for no audio, \"1,2,3\" for multiple tracks, default: first one). Multiple output tracks can be used for one input.",
+          "required": false,
+          "kind": "string",
+          "group": "Audio"
+        },
+        {
+          "id": "aencoder",
+          "names": [
+            "-E",
+            "--aencoder"
+          ],
+          "description": "Select audio encoder(s): av_aac, copy:aac, ac3, copy:ac3, eac3, copy:eac3, truehd, copy:truehd, copy:dts, copy:dtshd, copy:mp2, mp3, copy:mp3, opus, copy:opus, vorbis, copy:vorbis, flac16, flac24, copy:flac, alac16, alac24, copy:alac, pcm16, pcm24, copy:pcm, copy",
+          "required": false,
+          "kind": "enum",
+          "choices": [
+            "av_aac",
+            "copy:aac",
+            "ac3",
+            "copy:ac3",
+            "eac3",
+            "copy:eac3",
+            "truehd",
+            "copy:truehd",
+            "copy:dts",
+            "copy:dtshd",
+            "copy:mp2",
+            "mp3",
+            "copy:mp3",
+            "opus",
+            "copy:opus",
+            "vorbis",
+            "copy:vorbis",
+            "flac16",
+            "flac24",
+            "copy:flac",
+            "alac16",
+            "alac24",
+            "copy:alac",
+            "pcm16",
+            "pcm24",
+            "copy:pcm",
+            "copy"
+          ],
+          "group": "Audio"
+        },
+        {
+          "id": "audio-copy-mask",
+          "names": [
+            "--audio-copy-mask"
+          ],
+          "description": "Set audio codecs that are permitted when the \"copy\" audio encoder option is specified (aac/ac3/eac3/truehd/dts/dtshd/mp2/mp3/opus/vorbis/flac/alac/pcm)",
+          "required": false,
+          "kind": "string",
+          "group": "Audio"
+        },
+        {
+          "id": "audio-fallback",
+          "names": [
+            "--audio-fallback"
+          ],
+          "description": "Set audio codec to use when it is not possible to copy an audio track without re-encoding",
+          "required": false,
+          "kind": "string",
+          "group": "Audio"
+        },
+        {
+          "id": "ab",
+          "names": [
+            "-B",
+            "--ab"
+          ],
+          "description": "Set audio track bitrate(s) in kbit/s (default: determined by the selected codec, mixdown, and samplerate combination)",
+          "required": false,
+          "kind": "number",
+          "group": "Audio"
+        },
+        {
+          "id": "aq",
+          "names": [
+            "-Q",
+            "--aq"
+          ],
+          "description": "Set audio quality metric. Separate tracks by commas.",
+          "required": false,
+          "kind": "float",
+          "group": "Audio"
+        },
+        {
+          "id": "ac",
+          "names": [
+            "-C",
+            "--ac"
+          ],
+          "description": "Set audio compression metric (available depending on selected codec). Separate tracks by commas.",
+          "required": false,
+          "kind": "float",
+          "group": "Audio"
+        },
+        {
+          "id": "mixdown",
+          "names": [
+            "-6",
+            "--mixdown"
+          ],
+          "description": "Format(s) for audio downmixing/upmixing: mono, left_only, right_only, stereo, dpl1, dpl2, 5point1, 6point1, 7point1, 5_2_lfe",
+          "required": false,
+          "kind": "enum",
+          "choices": [
+            "mono",
+            "left_only",
+            "right_only",
+            "stereo",
+            "dpl1",
+            "dpl2",
+            "5point1",
+            "6point1",
+            "7point1",
+            "5_2_lfe"
+          ],
+          "group": "Audio"
+        },
+        {
+          "id": "normalize-mix",
+          "names": [
+            "--normalize-mix"
+          ],
+          "description": "Normalize audio mix levels to prevent clipping. 0 = Disable Normalization (default), 1 = Enable Normalization. Separate tracks by commas.",
+          "required": false,
+          "kind": "string",
+          "group": "Audio"
+        },
+        {
+          "id": "arate",
+          "names": [
+            "-R",
+            "--arate"
+          ],
+          "description": "Set audio samplerate(s) (8/11.025/12/16/22.05/24/32/44.1/48/88.2/96/176.4/192 kHz) or \"auto\". Separate tracks by commas.",
+          "required": false,
+          "kind": "string",
+          "group": "Audio"
+        },
+        {
+          "id": "drc",
+          "names": [
+            "-D",
+            "--drc"
+          ],
+          "description": "Apply extra dynamic range compression to the audio, making soft sounds louder. Range is 1.0 to 4.0, with 1.5 - 2.5 being a useful range.",
+          "required": false,
+          "kind": "float",
+          "group": "Audio"
+        },
+        {
+          "id": "gain",
+          "names": [
+            "--gain"
+          ],
+          "description": "Amplify or attenuate audio before encoding. Does NOT work with audio passthru (copy). Values are in dB.",
+          "required": false,
+          "kind": "float",
+          "group": "Audio"
+        },
+        {
+          "id": "adither",
+          "names": [
+            "--adither"
+          ],
+          "description": "Select dithering to apply before encoding audio: auto (default), none, rectangular, triangular, triangular_hp, lipshitz_ns",
+          "required": false,
+          "kind": "enum",
+          "choices": [
+            "auto",
+            "none",
+            "rectangular",
+            "triangular",
+            "triangular_hp",
+            "lipshitz_ns"
+          ],
+          "group": "Audio"
+        },
+        {
+          "id": "keep-aname",
+          "names": [
+            "--keep-aname"
+          ],
+          "description": "Passthru the source audio track(s) name(s).",
+          "required": false,
+          "kind": "flag",
+          "group": "Supported by encoder"
+        },
+        {
+          "id": "no-keep-aname",
+          "names": [
+            "--no-keep-aname"
+          ],
+          "description": "Disable the source audio track(s) name(s) passthru.",
+          "required": false,
+          "kind": "flag",
+          "group": "Supported by encoder"
+        },
+        {
+          "id": "automatic-naming-behaviour",
+          "names": [
+            "--automatic-naming-behaviour"
+          ],
+          "description": "Set the audio track(s) automatic naming behaviour: off, unnamed, all",
+          "required": false,
+          "kind": "enum",
+          "choices": [
+            "off",
+            "unnamed",
+            "all"
+          ],
+          "group": "Supported by encoder"
+        },
+        {
+          "id": "aname",
+          "names": [
+            "-A",
+            "--aname"
+          ],
+          "description": "Set audio track name(s). Separate tracks by commas.",
+          "required": false,
+          "kind": "string",
+          "group": "Set the audio track"
+        },
+        {
+          "id": "width",
+          "names": [
+            "-w",
+            "--width"
+          ],
+          "description": "Set storage width in pixels",
+          "required": false,
+          "kind": "number",
+          "group": "Picture"
+        },
+        {
+          "id": "height",
+          "names": [
+            "-l",
+            "--height"
+          ],
+          "description": "Set storage height in pixels",
+          "required": false,
+          "kind": "number",
+          "group": "Picture"
+        },
+        {
+          "id": "crop-mode",
+          "names": [
+            "--crop-mode"
+          ],
+          "description": "Choose which crop mode to operate in: auto|conservative|none|custom. Default: auto unless --crop is set in which case custom.",
+          "required": false,
+          "kind": "enum",
+          "choices": [
+            "auto",
+            "conservative",
+            "none",
+            "custom"
+          ],
+          "group": "Picture"
+        },
+        {
+          "id": "crop",
+          "names": [
+            "--crop"
+          ],
+          "description": "Set picture cropping in pixels (default: automatically remove black bars). Format: top:bottom:left:right",
+          "required": false,
+          "kind": "string",
+          "group": "Picture"
+        },
+        {
+          "id": "maxHeight",
+          "names": [
+            "-Y",
+            "--maxHeight"
+          ],
+          "description": "Set maximum height in pixels",
+          "required": false,
+          "kind": "number",
+          "group": "Picture"
+        },
+        {
+          "id": "maxWidth",
+          "names": [
+            "-X",
+            "--maxWidth"
+          ],
+          "description": "Set maximum width in pixels",
+          "required": false,
+          "kind": "number",
+          "group": "Picture"
+        },
+        {
+          "id": "non-anamorphic",
+          "names": [
+            "--non-anamorphic"
+          ],
+          "description": "Set pixel aspect ratio to 1:1",
+          "required": false,
+          "kind": "flag",
+          "group": "Picture"
+        },
+        {
+          "id": "auto-anamorphic",
+          "names": [
+            "--auto-anamorphic"
+          ],
+          "description": "Store pixel aspect ratio that maximizes storage resolution",
+          "required": false,
+          "kind": "flag",
+          "group": "Picture"
+        },
+        {
+          "id": "loose-anamorphic",
+          "names": [
+            "--loose-anamorphic"
+          ],
+          "description": "Store pixel aspect ratio that is as close as possible to the source video pixel aspect ratio",
+          "required": false,
+          "kind": "flag",
+          "group": "Picture"
+        },
+        {
+          "id": "custom-anamorphic",
+          "names": [
+            "--custom-anamorphic"
+          ],
+          "description": "Store pixel aspect ratio in video stream and directly control all parameters.",
+          "required": false,
+          "kind": "flag",
+          "group": "Picture"
+        },
+        {
+          "id": "display-width",
+          "names": [
+            "--display-width"
+          ],
+          "description": "Set display width in pixels, for custom anamorphic. This determines the display aspect during playback.",
+          "required": false,
+          "kind": "number",
+          "group": "Picture"
+        },
+        {
+          "id": "keep-display-aspect",
+          "names": [
+            "--keep-display-aspect"
+          ],
+          "description": "Preserve the source's display aspect ratio when using custom anamorphic",
+          "required": false,
+          "kind": "flag",
+          "group": "Picture"
+        },
+        {
+          "id": "no-keep-display-aspect",
+          "names": [
+            "--no-keep-display-aspect"
+          ],
+          "description": "Disable preset 'keep-display-aspect'",
+          "required": false,
+          "kind": "flag",
+          "group": "Picture"
+        },
+        {
+          "id": "pixel-aspect",
+          "names": [
+            "--pixel-aspect"
+          ],
+          "description": "Set pixel aspect for custom anamorphic (format: par_x:par_y). Mutually exclusive with --display-width.",
+          "required": false,
+          "kind": "string",
+          "group": "Picture"
+        },
+        {
+          "id": "itu-par",
+          "names": [
+            "--itu-par"
+          ],
+          "description": "Use wider ITU pixel aspect values for loose and custom anamorphic, useful with underscanned sources",
+          "required": false,
+          "kind": "flag",
+          "group": "Picture"
+        },
+        {
+          "id": "no-itu-par",
+          "names": [
+            "--no-itu-par"
+          ],
+          "description": "Disable preset 'itu-par'",
+          "required": false,
+          "kind": "flag",
+          "group": "Picture"
+        },
+        {
+          "id": "modulus",
+          "names": [
+            "--modulus"
+          ],
+          "description": "Set storage width and height modulus. Dimensions will be made divisible by this number (default: set by preset, typically 2).",
+          "required": false,
+          "kind": "number",
+          "group": "Picture"
+        },
+        {
+          "id": "color-range",
+          "names": [
+            "--color-range"
+          ],
+          "description": "Set the color range of the output: auto, limited, full (default: set by preset, typically limited)",
+          "required": false,
+          "kind": "enum",
+          "choices": [
+            "auto",
+            "limited",
+            "full"
+          ],
+          "group": "Picture"
+        },
+        {
+          "id": "color-matrix",
+          "names": [
+            "-M",
+            "--color-matrix"
+          ],
+          "description": "Set the color space signaled by the output. Overrides color signalling with no conversion: 2020, 709, 601, ntsc, pal (default: auto-detected from source)",
+          "required": false,
+          "kind": "enum",
+          "choices": [
+            "2020",
+            "709",
+            "601",
+            "ntsc",
+            "pal"
+          ],
+          "group": "Picture"
+        },
+        {
+          "id": "preset",
+          "names": [
+            "-Z",
+            "--preset"
+          ],
+          "description": "Select preset by name (case-sensitive). Enclose names containing spaces in double quotation marks.",
+          "required": false,
+          "kind": "string",
+          "group": "General"
+        },
+        {
+          "id": "preset-list",
+          "names": [
+            "-z",
+            "--preset-list"
+          ],
+          "description": "List available presets",
+          "required": false,
+          "kind": "flag",
+          "group": "General"
+        },
+        {
+          "id": "preset-import-file",
+          "names": [
+            "--preset-import-file"
+          ],
+          "description": "Import presets from a json preset file. May be a list of files separated by spaces, or use shell wildcards.",
+          "required": false,
+          "accepts": [
+            "json"
+          ],
+          "generates": null,
+          "transport": "local",
+          "confidence": 5,
+          "fill": "${CURRENT_SELECTION}",
+          "schema": {
+            "type": "string",
+            "format": "path",
+            "x-pm.extensions": [
+              "json"
+            ],
+            "x-pm.transport": "local"
+          },
+          "group": "General"
+        },
+        {
+          "id": "preset-import-gui",
+          "names": [
+            "--preset-import-gui"
+          ],
+          "description": "Import presets from GUI config preset file.",
+          "required": false,
+          "kind": "flag",
+          "group": "General"
+        },
+        {
+          "id": "preset-export",
+          "names": [
+            "--preset-export"
+          ],
+          "description": "Create a new preset from command line options and write a json representation of the preset to the console or a file.",
+          "required": false,
+          "kind": "string",
+          "group": "General"
+        },
+        {
+          "id": "preset-export-file",
+          "names": [
+            "--preset-export-file"
+          ],
+          "description": "Write new preset generated by '--preset-export' to file 'filename'.",
+          "required": false,
+          "accepts": null,
+          "generates": [
+            "json"
+          ],
+          "transport": "local",
+          "confidence": 5,
+          "fill": "${SRC_DIR}/${SRC_NAME}.json",
+          "schema": {
+            "type": "string",
+            "format": "path",
+            "x-pm.extensions": [
+              "json"
+            ],
+            "x-pm.transport": "local"
+          },
+          "group": "General"
+        },
+        {
+          "id": "preset-export-description",
+          "names": [
+            "--preset-export-description"
+          ],
+          "description": "Add a description to the new preset created with '--preset-export'",
+          "required": false,
+          "kind": "string",
+          "group": "General"
+        },
+        {
+          "id": "queue-import-file",
+          "names": [
+            "--queue-import-file"
+          ],
+          "description": "Import an encode queue file created by the GUI",
+          "required": false,
+          "accepts": [
+            "json"
+          ],
+          "generates": null,
+          "transport": "local",
+          "confidence": 3,
+          "fill": "${CURRENT_SELECTION}",
+          "schema": {
+            "type": "string",
+            "format": "path",
+            "x-pm.extensions": [
+              "json"
+            ],
+            "x-pm.transport": "local"
+          },
+          "group": "General"
+        },
+        {
+          "id": "no-dvdnav",
+          "names": [
+            "--no-dvdnav"
+          ],
+          "description": "Do not use dvdnav for reading DVDs",
+          "required": false,
+          "kind": "flag",
+          "group": "General"
+        },
+        {
+          "id": "min-duration",
+          "names": [
+            "--min-duration"
+          ],
+          "description": "Set the minimum title duration in seconds. Shorter titles will be ignored (default: 10).",
+          "required": false,
+          "kind": "number",
+          "group": "Source"
+        },
+        {
+          "id": "max-duration",
+          "names": [
+            "--max-duration"
+          ],
+          "description": "Set the maximum title duration in seconds. Longer titles will be ignored.",
+          "required": false,
+          "kind": "number",
+          "group": "Source"
+        },
+        {
+          "id": "scan",
+          "names": [
+            "--scan"
+          ],
+          "description": "Scan selected title only.",
+          "required": false,
+          "kind": "flag",
+          "group": "Source"
+        },
+        {
+          "id": "main-feature",
+          "names": [
+            "--main-feature"
+          ],
+          "description": "Detect and select the main feature title.",
+          "required": false,
+          "kind": "flag",
+          "group": "Source"
+        },
+        {
+          "id": "keep-duplicate-titles",
+          "names": [
+            "--keep-duplicate-titles"
+          ],
+          "description": "Keep duplicate titles when scanning (Blu-ray only)",
+          "required": false,
+          "kind": "flag",
+          "group": "Source"
+        },
+        {
+          "id": "angle",
+          "names": [
+            "--angle"
+          ],
+          "description": "Select the video angle (DVD or Blu-ray only)",
+          "required": false,
+          "kind": "number",
+          "group": "Source"
+        },
+        {
+          "id": "previews",
+          "names": [
+            "--previews"
+          ],
+          "description": "Select how many preview images are generated, and whether to store to disk (0 or 1). Format: number:boolean (default: 10:0)",
+          "required": false,
+          "kind": "string",
+          "group": "Source"
+        },
+        {
+          "id": "start-at-preview",
+          "names": [
+            "--start-at-preview"
+          ],
+          "description": "Start encoding at a given preview.",
+          "required": false,
+          "kind": "number",
+          "group": "Source"
+        },
+        {
+          "id": "start-at",
+          "names": [
+            "--start-at"
+          ],
+          "description": "Start encoding at a given offset in seconds, frames, or pts (on a 90kHz clock). E.g. seconds:10, frames:300, pts:900000.",
+          "required": false,
+          "kind": "string",
+          "group": "Source"
+        },
+        {
+          "id": "stop-at",
+          "names": [
+            "--stop-at"
+          ],
+          "description": "Stop encoding after a given duration in seconds, frames, or pts (on a 90kHz clock) has passed. Duration is relative to --start-at.",
+          "required": false,
+          "kind": "string",
+          "group": "Source"
+        },
+        {
+          "id": "subtitle-lang-list",
+          "names": [
+            "--subtitle-lang-list"
+          ],
+          "description": "Specify a comma separated list of subtitle languages you would like to select from the source title by ISO 639-2 code.",
+          "required": false,
+          "kind": "string",
+          "group": "Subtitles"
+        },
+        {
+          "id": "all-subtitles",
+          "names": [
+            "--all-subtitles"
+          ],
+          "description": "Select all subtitle tracks matching languages in the specified language list (--subtitle-lang-list).",
+          "required": false,
+          "kind": "flag",
+          "group": "Subtitles"
+        },
+        {
+          "id": "first-subtitle",
+          "names": [
+            "--first-subtitle"
+          ],
+          "description": "Select first subtitle track matching languages in the specified language list (--subtitle-lang-list).",
+          "required": false,
+          "kind": "flag",
+          "group": "Subtitles"
+        },
+        {
+          "id": "subtitle",
+          "names": [
+            "-s",
+            "--subtitle"
+          ],
+          "description": "Select subtitle track(s), separated by commas. More than one output track can be used for one input. \"none\" for no subtitles. Use \"scan\" for forced subtitle detection.",
+          "required": false,
+          "kind": "string",
+          "group": "Subtitles"
+        },
+        {
+          "id": "subtitle-forced",
+          "names": [
+            "-F",
+            "--subtitle-forced"
+          ],
+          "description": "Only display subtitles from the selected stream if the subtitle has the forced flag set.",
+          "required": false,
+          "kind": "string",
+          "group": "Subtitles"
+        },
+        {
+          "id": "subtitle-burned",
+          "names": [
+            "--subtitle-burned"
+          ],
+          "description": "Burn the selected subtitle into the video track. Values: number, \"native\", or \"none\".",
+          "required": false,
+          "kind": "string",
+          "group": "Subtitles"
+        },
+        {
+          "id": "subtitle-default",
+          "names": [
+            "--subtitle-default"
+          ],
+          "description": "Flag the selected subtitle as the default subtitle to be displayed upon playback.",
+          "required": false,
+          "kind": "string",
+          "group": "Subtitles"
+        },
+        {
+          "id": "native-language",
+          "names": [
+            "-N",
+            "--native-language"
+          ],
+          "description": "Specify your language preference by ISO 639-2 code. When the first audio track does not match your native language then select the first subtitle that does.",
+          "required": false,
+          "kind": "string",
+          "group": "Subtitles"
+        },
+        {
+          "id": "native-dub",
+          "names": [
+            "--native-dub"
+          ],
+          "description": "Used in conjunction with --native-language requests that if no audio tracks are selected the default selected audio track will be the first one that matches the --native-language.",
+          "required": false,
+          "kind": "flag",
+          "group": "Subtitles"
+        },
+        {
+          "id": "srt-file",
+          "names": [
+            "--srt-file"
+          ],
+          "description": "SubRip SRT filename(s), separated by commas.",
+          "required": false,
+          "accepts": [
+            "srt"
+          ],
+          "generates": null,
+          "transport": "local",
+          "confidence": 5,
+          "fill": "${CURRENT_SELECTION}",
+          "schema": {
+            "type": "string",
+            "format": "path",
+            "x-pm.extensions": [
+              "srt"
+            ],
+            "x-pm.transport": "local"
+          },
+          "group": "Subtitles"
+        },
+        {
+          "id": "srt-codeset",
+          "names": [
+            "--srt-codeset"
+          ],
+          "description": "Character codeset(s) that the SRT file(s) are encoded as. If not specified, 'latin1' is assumed.",
+          "required": false,
+          "kind": "string",
+          "group": "Subtitles"
+        },
+        {
+          "id": "srt-offset",
+          "names": [
+            "--srt-offset"
+          ],
+          "description": "Offset (in milliseconds) to apply to the SRT file(s). If not specified, zero is assumed. Offsets may be negative.",
+          "required": false,
+          "kind": "string",
+          "group": "Subtitles"
+        },
+        {
+          "id": "srt-lang",
+          "names": [
+            "--srt-lang"
+          ],
+          "description": "SRT track language as an ISO 639-2 code. If not specified, then 'und' is used.",
+          "required": false,
+          "kind": "string",
+          "group": "Subtitles"
+        },
+        {
+          "id": "srt-default",
+          "names": [
+            "--srt-default"
+          ],
+          "description": "Flag the selected SRT as the default subtitle to be displayed during playback.",
+          "required": false,
+          "kind": "string",
+          "group": "Subtitles"
+        },
+        {
+          "id": "srt-burn",
+          "names": [
+            "--srt-burn"
+          ],
+          "description": "Burn the selected SRT subtitle into the video track.",
+          "required": false,
+          "kind": "string",
+          "group": "Subtitles"
+        },
+        {
+          "id": "ssa-file",
+          "names": [
+            "--ssa-file"
+          ],
+          "description": "SubStationAlpha SSA filename(s), separated by commas.",
+          "required": false,
+          "accepts": [
+            "ssa",
+            "ass"
+          ],
+          "generates": null,
+          "transport": "local",
+          "confidence": 5,
+          "fill": "${CURRENT_SELECTION}",
+          "schema": {
+            "type": "string",
+            "format": "path",
+            "x-pm.extensions": [
+              "ssa",
+              "ass"
+            ],
+            "x-pm.transport": "local"
+          },
+          "group": "Subtitles"
+        },
+        {
+          "id": "ssa-offset",
+          "names": [
+            "--ssa-offset"
+          ],
+          "description": "Offset (in milliseconds) to apply to the SSA file(s). If not specified, zero is assumed. Offsets may be negative.",
+          "required": false,
+          "kind": "string",
+          "group": "Subtitles"
+        },
+        {
+          "id": "ssa-lang",
+          "names": [
+            "--ssa-lang"
+          ],
+          "description": "SSA track language as an ISO 639-2 code. If not specified, then 'und' is used.",
+          "required": false,
+          "kind": "string",
+          "group": "Subtitles"
+        },
+        {
+          "id": "ssa-default",
+          "names": [
+            "--ssa-default"
+          ],
+          "description": "Flag the selected SSA as the default subtitle to be displayed during playback.",
+          "required": false,
+          "kind": "string",
+          "group": "Subtitles"
+        },
+        {
+          "id": "ssa-burn",
+          "names": [
+            "--ssa-burn"
+          ],
+          "description": "Burn the selected SSA subtitle into the video track.",
+          "required": false,
+          "kind": "string",
+          "group": "Subtitles"
+        },
+        {
+          "id": "json",
+          "names": [
+            "--json"
+          ],
+          "description": "Log title, progress, and version info in JSON format",
+          "required": false,
+          "kind": "flag",
+          "group": "General"
+        },
+        {
+          "id": "verbose",
+          "names": [
+            "-v",
+            "--verbose"
+          ],
+          "description": "Be verbose (optional argument: logging level)",
+          "required": false,
+          "kind": "number",
+          "group": "General"
+        },
+        {
+          "id": "colorspace",
+          "names": [
+            "--colorspace"
+          ],
+          "description": "Convert colorspace, transfer characteristics or color primaries. Presets: bt2020, bt709, bt601-6-525, bt601-6-625. Custom format also supported.",
+          "required": false,
+          "kind": "string",
+          "group": "width=w:height=h:color=c:x=x:y=y:top=t:bottom=b"
+        },
+        {
+          "id": "grayscale",
+          "names": [
+            "-g",
+            "--grayscale"
+          ],
+          "description": "Grayscale encoding",
+          "required": false,
+          "kind": "flag",
+          "group": "primaries=p:transfer=t:matrix=m:range=r"
+        },
+        {
+          "id": "no-grayscale",
+          "names": [
+            "--no-grayscale"
+          ],
+          "description": "Disable preset 'grayscale'",
+          "required": false,
+          "kind": "flag",
+          "group": "primaries=p:transfer=t:matrix=m:range=r"
+        }
+      ]
+    }
+  }
+}
